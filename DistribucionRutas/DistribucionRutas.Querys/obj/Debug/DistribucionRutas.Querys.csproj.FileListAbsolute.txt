@@ -1,0 +1,6 @@
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas.Querys\bin\Debug\DistribucionRutas.Querys.dll
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas.Querys\bin\Debug\DistribucionRutas.Querys.pdb
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas.Querys\obj\Debug\DistribucionRutas.Querys.csproj.AssemblyReference.cache
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas.Querys\obj\Debug\DistribucionRutas.Querys.csproj.CoreCompileInputs.cache
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas.Querys\obj\Debug\DistribucionRutas.Querys.dll
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas.Querys\obj\Debug\DistribucionRutas.Querys.pdb
