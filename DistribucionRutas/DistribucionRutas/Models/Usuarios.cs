@@ -9,10 +9,11 @@ namespace DistribucionRutas.Models
 {
     public class Usuarios
     {
-        [DisplayName("Nombre de usuario")]
-        [Required(ErrorMessage = "El campo usuario es obligatorio")]
+        
         public bool Existe { get; set; }
         public int IdUsuario { get; set; }
+        [DisplayName("Nombre de usuario")]
+        [Required(ErrorMessage = "El campo usuario es obligatorio")]
         public string Usuario { get; set; }
         [DisplayName("Contraseña")]
         [DataType(DataType.Password)]

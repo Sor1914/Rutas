@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ObtieneUsuario" xml:space="preserve">
-    <value>SELECT COUNT(Id_Usuario) AS EXISTE FROM Usuarios WHERE Usuario= '{0}' AND CAST(DECRYPTBYPASSPHRASE('JS0R',Contrasenia) AS VARCHAR(MAX)) = '{1}';</value>
+    <value>SELECT IdUsuario, Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER('{0}') AND CAST(DECRYPTBYPASSPHRASE('JS0R',Contrasenia) AS VARCHAR(MAX)) = '{1}';</value>
   </data>
 </root>

@@ -19,7 +19,7 @@ namespace DistribucionRutas.Controllers
             ViewBag.Layout = LAYOUTLOGIN;
         }
         
-        public ActionResult Index()
+        public ActionResult Login()
         {
             ViewBag.Layout = LAYOUTLOGIN;
             return View();
@@ -58,6 +58,7 @@ namespace DistribucionRutas.Controllers
                     if (loginResponse.Existe)
                     {
                         Permisos permisos = clsLogin.AsignarPermisos(loginResponse.IdRol);
+                        Session["usuario"] = loginResponse.Usuario; 
                         Session["Permisos"] = permisos;                      
                         return RedirectToAction("Bienvenida", "MenuPrincipal");
                     }

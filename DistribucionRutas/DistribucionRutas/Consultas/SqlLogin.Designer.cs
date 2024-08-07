@@ -61,7 +61,7 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a SELECT COUNT(Id_Usuario) AS EXISTE FROM Usuarios WHERE Usuario= &apos;{0}&apos; AND CAST(DECRYPTBYPASSPHRASE(&apos;JS0R&apos;,Contrasenia) AS VARCHAR(MAX)) = &apos;{1}&apos;;.
+        ///   Busca una cadena traducida similar a SELECT IdUsuario, Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER(&apos;{0}&apos;) AND CAST(DECRYPTBYPASSPHRASE(&apos;JS0R&apos;,Contrasenia) AS VARCHAR(MAX)) = &apos;{1}&apos;;.
         /// </summary>
         internal static string ObtieneUsuario {
             get {

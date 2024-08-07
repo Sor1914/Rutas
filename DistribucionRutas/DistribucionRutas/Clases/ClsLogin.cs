@@ -15,15 +15,16 @@ namespace DistribucionRutas.Clases
         ClsConexionSql conexionSql;
         public Usuarios Autenticar(Usuarios usuario)
         {
+            if (usuario == null) throw new ArgumentNullException(nameof(usuario));
             Usuarios usuarioResponse = new Usuarios();
             conexionSql = new ClsConexionSql();
-            if (usuario == null) throw new ArgumentNullException(nameof(usuario));
             var UsuarioDb = conexionSql.CrearConsulta(
                 string.Format(SqlLogin.ObtieneUsuario, usuario.Usuario, usuario.Contrasenia));
-            usuarioResponse.Existe = UsuarioDb.Rows[0]["Existe"].ToString().Equals("1");
-            if (usuarioResponse.Existe)
+            
+            if (UsuarioDb.Rows.Count > 0)
             {
-                usuarioResponse = ConvertirDataRowAObjeto<Usuarios>(UsuarioDb.Rows[0]);                
+                usuarioResponse = ConvertirDataRowAObjeto<Usuarios>(UsuarioDb.Rows[0]);
+                usuarioResponse.Existe = true;
             }
             return usuarioResponse;
         }
