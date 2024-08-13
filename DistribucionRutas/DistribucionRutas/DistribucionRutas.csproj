@@ -121,18 +121,35 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\ClsConexionSql.cs" />
+    <Compile Include="Clases\ClsEnvioEmail.cs" />
     <Compile Include="Clases\ClsLogin.cs" />
+    <Compile Include="Clases\ClsRegistro.cs" />
+    <Compile Include="Clases\ClsUsuarios.cs" />
+    <Compile Include="Clases\Util.cs" />
     <Compile Include="Consultas\SqlLogin.Designer.cs">
       <DependentUpon>SqlLogin.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Consultas\SqlRegistro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlRegistro.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\SqlUsuarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlUsuarios.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuPrincipalController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Permisos.cs" />
+    <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -182,6 +199,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MostrarMensaje.js" />
     <Content Include="Scripts\sidebars.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -198,9 +216,11 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
     <Content Include="Views\MenuPrincipal\Bienvenida.cshtml" />
+    <Content Include="Views\Registro\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -233,6 +253,14 @@
     <EmbeddedResource Include="Consultas\SqlLogin.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlLogin.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlRegistro.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlRegistro.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlUsuarios.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlUsuarios.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -86,3 +86,4 @@ C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRut
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.pdb
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlLogin.resources
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.GenerateResource.cache
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlRegistro.resources

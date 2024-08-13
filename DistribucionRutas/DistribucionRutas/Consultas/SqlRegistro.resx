@@ -117,7 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ObtieneUsuario" xml:space="preserve">
-    <value>SELECT Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER('{0}') AND CAST(DECRYPTBYPASSPHRASE('JS0R',Contrasenia) AS VARCHAR(MAX)) = '{1}' And Estado = 1;</value>
+  <data name="InsertaUsuario" xml:space="preserve">
+    <value>INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo, Estado)
+VALUES ('{0}',ENCRYPTBYPASSPHRASE('JS0R', '{1}' ),'{2}','{3}','{4}',3, 'Sys', 1);</value>
+  </data>
+  <data name="ValidaEmailRegistrado" xml:space="preserve">
+    <value>Select Usuario from Usuarios where Upper(Email) = Upper('{0}' and Estado = 1);</value>
+  </data>
+  <data name="ValidaUsuarioRegistrado" xml:space="preserve">
+    <value>Select Usuario from Usuarios where Upper(Usuario)= Upper('{0}');</value>
   </data>
 </root>

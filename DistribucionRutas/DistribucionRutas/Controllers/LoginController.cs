@@ -21,13 +21,15 @@ namespace DistribucionRutas.Controllers
         
         public ActionResult Login()
         {
+            //ClsEnvioEmail clsEnvioEmail = new ClsEnvioEmail();
+            //clsEnvioEmail.enviarCorreo("jonathansor2000sm@gmail.com".Split(), "Prueba", "Prueba");
             ViewBag.Layout = LAYOUTLOGIN;
             return View();
         }
 
         public ActionResult LoginWhenRegisterComplete()
         {
-            MostrarMensaje("Te has registrado correctamente, inicia sesión", 1);
+            Util.MostrarMensaje(ViewBag, "Te has registrado correctamente, inicia sesión", 1);
             return View("Login");
         }
 
@@ -58,7 +60,9 @@ namespace DistribucionRutas.Controllers
                     if (loginResponse.Existe)
                     {
                         Permisos permisos = clsLogin.AsignarPermisos(loginResponse.IdRol);
-                        Session["usuario"] = loginResponse.Usuario; 
+                        Session["usuario"] = loginResponse.Usuario;
+                        Session["nombres"] = loginResponse.Nombres;
+                        Session["apellidos"] = loginResponse.Apellidos;
                         Session["Permisos"] = permisos;                      
                         return RedirectToAction("Bienvenida", "MenuPrincipal");
                     }
@@ -84,11 +88,6 @@ namespace DistribucionRutas.Controllers
             }
         }
 
-        private void MostrarMensaje(string mensaje, int tipo)
-        {
-            ViewBag.Mensaje = mensaje;
-            ViewBag.Tipo = tipo;
-            ViewBag.MostrarModal = true;
-        }
+        
     }
 }

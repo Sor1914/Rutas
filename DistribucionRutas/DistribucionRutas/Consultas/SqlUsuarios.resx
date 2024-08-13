@@ -117,7 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ObtieneUsuario" xml:space="preserve">
-    <value>SELECT Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER('{0}') AND CAST(DECRYPTBYPASSPHRASE('JS0R',Contrasenia) AS VARCHAR(MAX)) = '{1}' And Estado = 1;</value>
+  <data name="AsignaRolUsuario" xml:space="preserve">
+    <value>UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = '{2}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{1}';</value>
+  </data>
+  <data name="DesactivaUsuario" xml:space="preserve">
+    <value>UPDATE Usuarios SET Estado = {2}, UsuarioModifico = '{1}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{0}';</value>
+  </data>
+  <data name="ObtieneRoles" xml:space="preserve">
+    <value>Select * from Roles Where estado =1</value>
+  </data>
+  <data name="ObtieneUsuarios" xml:space="preserve">
+    <value>Select Usuarios.*, Roles.Descripcion as Rol From Usuarios 
+inner join Roles
+	on Usuarios.IdRol = Roles.IdRol
+Where Usuarios.Estado = 1
+Order By Usuarios.usuario
+OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY</value>
   </data>
 </root>

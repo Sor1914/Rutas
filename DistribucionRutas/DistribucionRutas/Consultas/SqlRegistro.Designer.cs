@@ -22,14 +22,14 @@ namespace DistribucionRutas.Consultas {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SqlLogin {
+    internal class SqlRegistro {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SqlLogin() {
+        internal SqlRegistro() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace DistribucionRutas.Consultas {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DistribucionRutas.Consultas.SqlLogin", typeof(SqlLogin).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DistribucionRutas.Consultas.SqlRegistro", typeof(SqlRegistro).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,30 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a SELECT Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER(&apos;{0}&apos;) AND CAST(DECRYPTBYPASSPHRASE(&apos;JS0R&apos;,Contrasenia) AS VARCHAR(MAX)) = &apos;{1}&apos; And Estado = 1;.
+        ///   Busca una cadena traducida similar a INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo, Estado)
+        ///VALUES (&apos;{0}&apos;,ENCRYPTBYPASSPHRASE(&apos;JS0R&apos;, &apos;{1}&apos; ),&apos;{2}&apos;,&apos;{3}&apos;,&apos;{4}&apos;,3, &apos;Sys&apos;, 1);.
         /// </summary>
-        internal static string ObtieneUsuario {
+        internal static string InsertaUsuario {
             get {
-                return ResourceManager.GetString("ObtieneUsuario", resourceCulture);
+                return ResourceManager.GetString("InsertaUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select Usuario from Usuarios where Upper(Email) = Upper(&apos;{0}&apos; and Estado = 1);.
+        /// </summary>
+        internal static string ValidaEmailRegistrado {
+            get {
+                return ResourceManager.GetString("ValidaEmailRegistrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select Usuario from Usuarios where Upper(Usuario)= Upper(&apos;{0}&apos;);.
+        /// </summary>
+        internal static string ValidaUsuarioRegistrado {
+            get {
+                return ResourceManager.GetString("ValidaUsuarioRegistrado", resourceCulture);
             }
         }
     }

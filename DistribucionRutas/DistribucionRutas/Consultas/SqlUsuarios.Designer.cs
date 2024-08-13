@@ -22,14 +22,14 @@ namespace DistribucionRutas.Consultas {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SqlLogin {
+    internal class SqlUsuarios {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SqlLogin() {
+        internal SqlUsuarios() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace DistribucionRutas.Consultas {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DistribucionRutas.Consultas.SqlLogin", typeof(SqlLogin).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DistribucionRutas.Consultas.SqlUsuarios", typeof(SqlUsuarios).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,43 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a SELECT Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER(&apos;{0}&apos;) AND CAST(DECRYPTBYPASSPHRASE(&apos;JS0R&apos;,Contrasenia) AS VARCHAR(MAX)) = &apos;{1}&apos; And Estado = 1;.
+        ///   Busca una cadena traducida similar a UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = &apos;{2}&apos;, FechaModifico = CURRENT_TIMESTAMP() where Usuario = &apos;{1}&apos;;.
         /// </summary>
-        internal static string ObtieneUsuario {
+        internal static string AsignaRolUsuario {
             get {
-                return ResourceManager.GetString("ObtieneUsuario", resourceCulture);
+                return ResourceManager.GetString("AsignaRolUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a UPDATE Usuarios SET Estado = {2}, UsuarioModifico = &apos;{1}&apos;, FechaModifico = CURRENT_TIMESTAMP() where Usuario = &apos;{0}&apos;;.
+        /// </summary>
+        internal static string DesactivaUsuario {
+            get {
+                return ResourceManager.GetString("DesactivaUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select * from Roles Where estado =1.
+        /// </summary>
+        internal static string ObtieneRoles {
+            get {
+                return ResourceManager.GetString("ObtieneRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select Usuarios.*, Roles.Descripcion as Rol From Usuarios 
+        ///inner join Roles
+        ///	on Usuarios.IdRol = Roles.IdRol
+        ///Where Usuarios.Estado = 1
+        ///Order By Usuarios.usuario
+        ///OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY.
+        /// </summary>
+        internal static string ObtieneUsuarios {
+            get {
+                return ResourceManager.GetString("ObtieneUsuarios", resourceCulture);
             }
         }
     }

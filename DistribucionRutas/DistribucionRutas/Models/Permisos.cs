@@ -7,6 +7,6 @@ namespace DistribucionRutas.Models
 {
     public class Permisos
     {
-        public bool CrearRuta { get; set; } = false;
+        public bool GestionUsuarios { get; set; } = false;
     }
 }

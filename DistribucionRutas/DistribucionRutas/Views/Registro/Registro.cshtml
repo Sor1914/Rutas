@@ -1,8 +1,7 @@
-﻿@model DistribucionRutas.Models.Usuarios
+﻿@model DistribucionRutas.Models.Registro
 @{
-    ViewBag.Title = "Inicio de Sesión";
+    ViewBag.Title = "Registro";
     Layout = ViewBag.Layout;
-
 }
 
 @Html.AntiForgeryToken()
@@ -10,19 +9,19 @@
 <div class="container">
     <div class="card">
         <div class="card-body sombras col-auto" style="padding: 0px;">
-            <div class="row">
+            <div class="row" ">
                 <div class="col-6 bg-black m-0 row justify-content-center align-items-center">
                     <div class="col-auto p-5 text-white text-center">
-                        <p class="h10 text-white">Es un gusto saludarte</p>
-                        <p class="h3 text-white">Bienvenido De Nuevo</p>
+                        <p class="h10 text-white">---</p>
+                        <p class="h3 text-white">Registrate</p>
                         <p class="h1">-</p>
-                        <p class="h15">Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum</p>
+                        <p class="h15">Registrate en nuestro portal para agilizar tus procesos</p>
                     </div>
                 </div>
                 <div class="col-6 m-0 row justify-content-center align-items-center">
                     <div class="col-8 p-5 text-center">
 
-                        @using (Html.BeginForm("IniciarSesion", "Login", FormMethod.Post))
+                        @using (Html.BeginForm("registrarse", "Registro", FormMethod.Post))
                         {
                             <p class="h10 text-black">Login</p>
                             <p class="h3 text-black">Ingresa tus Datos</p>
@@ -31,25 +30,43 @@
                                 @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label" })
                                 @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control text-center" } })
                                 @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger control-label" })
-
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Contrasenia, htmlAttributes: new { @class = "control-label" })
                                 @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control text-center" } })
                                 @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger control-label" })
                             </div>
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ConfirmContrasenia, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.ConfirmContrasenia, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmContrasenia, "", new { @class = "text-danger control-label" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger control-label" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger control-label" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger control-label" })
+                            </div>
                             @Html.ValidationSummary(true, "", new { @class = "text-danger control-label" })
 
                             <div class="row">
                                 <br />
                             </div>
                             <div class="row">
-                                <input type="submit" name="btnLogin" value="Inicia Sesión" class="btn btn-outline-dark form-control" />
+                                <input type="submit" name="btnRegistro" value="Registrarse" class="btn btn-outline-dark form-control" />
                             </div>
                             <br />
                             <div class="row">
-                                <input type="submit" formnovalidate name="btnRegistro" value="Regístrate" class="btn btn-outline-dark form-control" />
+                                <input type="submit" formnovalidate name="btnRegresar" value="Regresar" class="btn btn-outline-dark form-control" />
                             </div>
                         }
                     </div>
@@ -75,18 +92,17 @@
 
     </div>
 </div>
+
 @section Scripts {
     @if (ViewBag.MostrarModal != null && ViewBag.MostrarModal)
     {
         <script src="~/Scripts/MostrarMensaje.js"></script>
         <script>
-
             $(document).ready(function () {
                 var mensaje = "@ViewBag.Mensaje";
                 var tipo = @ViewBag.Tipo;
                 mostrarNotificacion(tipo, mensaje);
             });
         </script>
-
     }
 }

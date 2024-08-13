@@ -1,19 +1,31 @@
+Drop Database Rutas;
 Create Database Rutas;
 Use Rutas;
+Use Prueba;
 
 Create Table Roles(	
 	IdRol int not null IDENTITY(1,1) PRIMARY KEY,	
-	Descripcion Varchar(50)
+	Descripcion Varchar(50),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 );
 
 Create Table Usuarios(
-	IdUsuario int IDENTITY(1,1) PRIMARY KEY,
 	Usuario Varchar(10),
 	Contrasenia VARBINARY(MAX),
 	Email varchar(40),
 	Nombres varchar(50),
 	Apellidos varchar(50),
 	IdRol int,
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime,
+	Primary Key(Usuario),
 	foreign key(idRol) references Roles(IdRol)
 );
 
@@ -23,16 +35,25 @@ Create Table Horarios
 	HoraEntrada Time,
 	HoraAlmuerzo Time,
 	HoraSalida Time,	
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 )
 
-Create Table Conductores(
-	IdConductor int IDENTITY(1,1) PRIMARY KEY,
-	Licencia varchar(16),	
+Create Table Conductores(	
+	Licencia varchar(16) Primary Key,	
 	TipoLicencia varchar(1),
 	idHorario int,
 	LimiteParadas int,	
-	IdUsuario int,
-	foreign key(IdUsuario) references Usuarios(IdUsuario),
+	Usuario Varchar(10),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
+	foreign key(Usuario) references Usuarios(Usuario),
 	foreign key (idHorario) references Horarios(IdHorario)
 );
 
@@ -43,7 +64,12 @@ Create Table TipoVehiculos(
 	KMXGalon decimal(4,2),
 	Galones decimal(4,2),
 	TipoGas varchar(3),
-	Descripcion varchar(20)
+	Descripcion varchar(20),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 );
 
 Create Table Vehiculos
@@ -51,9 +77,14 @@ Create Table Vehiculos
 	IdVehiculo int IDENTITY(1,1) PRIMARY KEY,
 	Placa varchar(7),
 	KmRecorridos decimal(4,2),	
-	idConductor int,
+	LicenciaConductor Varchar(16),
 	idTipoVehiculo int,
-	foreign key(idConductor) references Conductores(IdConductor),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
+	foreign key(LicenciaConductor) references Conductores(LIcencia),
 	foreign key(idTipoVehiculo) references TipoVehiculos(IdTipoVehiculo)
 )
 
@@ -63,7 +94,12 @@ Create Table Proveedor
 	NombreProveedor Varchar(50),
 	DireccionProveedor Varchar(50),
 	Longitud Varchar(50),
-	Latitud Varchar(50)
+	Latitud Varchar(50),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 )
 
 Create Table Productos
@@ -71,7 +107,12 @@ Create Table Productos
 	IdProducto int IDENTITY(1,1) PRIMARY KEY,	
 	NombreProducto varchar (50),
 	TipoProducto varchar(10),
-	PesoProducto decimal(2,2),				
+	PesoProducto decimal(2,2),	
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 )
 
 Create Table ProveedorProducto
@@ -80,7 +121,12 @@ Create Table ProveedorProducto
 	IdProducto int Foreign Key References Productos(IdProducto),
 	Primary Key (IdProveedor, IdProducto),
 	PrecioProducto decimal(2,2),
-	Existencia int
+	Existencia int,
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 )
 
 Create Table Rutas
@@ -90,7 +136,12 @@ Create Table Rutas
 	LatitudInicial Varchar(50),
 	LatitudFinal Varchar(50),
 	LongitudInicial Varchar(50),
-	LongitudFinal Varchar(50)	
+	LongitudFinal Varchar(50),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
 )
 
 
@@ -105,15 +156,47 @@ Create Table DetalleRuta
 	IdVehiculo int foreign key references Vehiculos(IdVehiculo),
 	IdProducto int foreign key references Productos(IdProducto),
 	IdRuta int foreign key references Rutas(IdRuta),
-	IdUsuario int foreign key references Usuarios(IdUsuario)
-)
+	Usuario Varchar(10) foreign key references Usuarios(Usuario),
+	Estado int,
+	UsuarioCreo varchar(10),
+	FechaCreo DateTime Default Current_Timestamp,
+	UsuarioModifico Varchar(10),
+	FechaModifico Datetime
+);
 
-INSERT INTO Roles(Descripcion)
+INSERT INTO Roles(Descripcion, UsuarioCreo)
 VALUES
-('Administrador'),
-('Conductor'),
-('Usuario');
+('Administrador', 'Sys'),
+('Conductor', 'Sys'),
+('Usuario', 'Sys');
+
+INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo)
+VALUES ('JSOR',ENCRYPTBYPASSPHRASE('JS0R', 'Sor1906197912' ),'jonathansor2000sm@gmail.com','Jonathan Elias','Sor Monroy',1, 'Sys');
+
+--Querys para Desarrollo
+
+INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo)
+VALUES ('{0}',ENCRYPTBYPASSPHRASE('JS0R', '{1}' ),'{2}','{3}','{4}',3, 'Sys');
 
 
-INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol)
-VALUES ('JSOR',ENCRYPTBYPASSPHRASE('JS0R', 'Sor1906197912' ),'jonathansor2000sm@gmail.com','Jonathan Elias','Sor Monroy',1);
+Select * from usuarios
+
+Select Usuario from Usuarios where Upper(Usuario)= Upper('jsor');
+
+SELECT Usuario, Email, Nombres, Apellidos, IdRol FROM Usuarios WHERE UPPER(Usuario)= UPPER('jsor1') AND CAST(DECRYPTBYPASSPHRASE('JS0R',Contrasenia) AS VARCHAR(MAX)) = 'Sor1906197912';
+
+UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = '{1}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{0}';
+
+UPDATE Usuarios SET Estado = 0, UsuarioModifico = '{1}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{0}';
+
+
+Select * from Roles Where estado =1 
+
+
+
+Select Usuarios.*, Roles.Descripcion as Rol From Usuarios 
+inner join Roles
+	on Usuarios.IdRol = Roles.IdRol
+Where Usuarios.Estado = 1
+Order By Usuarios.usuario
+OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY

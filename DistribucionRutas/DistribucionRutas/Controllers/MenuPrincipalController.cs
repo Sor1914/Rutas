@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DistribucionRutas.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,9 +21,11 @@ namespace DistribucionRutas.Controllers
         // GET: MenuInicial
         public ActionResult Bienvenida()
         {
-
+            ViewBag.Permisos = (Permisos)Session["Permisos"];
             ViewBag.PaginaActual = ControllerContext.RouteData.Values["action"].ToString();
             ViewBag.Usuario = Session["usuario"].ToString();
+            ViewBag.Nombres = Session["nombres"].ToString();
+            ViewBag.Apellidos = Session["apellidos"].ToString();
             return View();
         }
 
