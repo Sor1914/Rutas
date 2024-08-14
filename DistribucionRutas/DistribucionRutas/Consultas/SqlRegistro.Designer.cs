@@ -71,7 +71,7 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select Usuario from Usuarios where Upper(Email) = Upper(&apos;{0}&apos; and Estado = 1);.
+        ///   Busca una cadena traducida similar a Select Usuario from Usuarios where Upper(Email) = Upper(&apos;{0}&apos;) and Estado = 1;.
         /// </summary>
         internal static string ValidaEmailRegistrado {
             get {

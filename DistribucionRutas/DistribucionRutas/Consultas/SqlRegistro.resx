@@ -122,7 +122,7 @@
 VALUES ('{0}',ENCRYPTBYPASSPHRASE('JS0R', '{1}' ),'{2}','{3}','{4}',3, 'Sys', 1);</value>
   </data>
   <data name="ValidaEmailRegistrado" xml:space="preserve">
-    <value>Select Usuario from Usuarios where Upper(Email) = Upper('{0}' and Estado = 1);</value>
+    <value>Select Usuario from Usuarios where Upper(Email) = Upper('{0}') and Estado = 1;</value>
   </data>
   <data name="ValidaUsuarioRegistrado" xml:space="preserve">
     <value>Select Usuario from Usuarios where Upper(Usuario)= Upper('{0}');</value>

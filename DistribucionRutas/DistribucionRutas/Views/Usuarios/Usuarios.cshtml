@@ -1,0 +1,130 @@
+﻿@model DistribucionRutas.Models.Usuarios
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = ViewBag.Layout;
+}
+
+<div class="container" style="margin-top: 15px; margin-bottom: 15px">
+    <div class="card" style="margin-top: 15px">
+        <h5 class="card-header">Tipos de Queja</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 d-grid gap-2 d-flex justify-content-end">
+                </div>
+                <div class="col-md-6 d-grid gap-2 d-flex justify-content-end">
+                    <a href="@Url.Action("mostrarModalNuevo", new {})" class="btn btn-outline-dark my-action-link">
+                        Agregar <i class="fa fa-plus-circle"></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="input-group mb-3">
+                        <div class="input-group mb-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5  gap-2  justify-content-end">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">Nombre</span>
+                        <input id="txtBusqueda" placeholder="Nombre" class="form-control" />
+                        <button id="btnBuscar" class="btn btn-outline-dark fa fa-search my-action-link"></button>
+                    </div>
+                </div>
+                <hr />
+                <div id="tablaQuejas">
+                    @Html.Partial("_Usuarios")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalNotificacion" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div id="headerNotificacion" class="modal-header">
+                <h5 class="modal-title text-white">Notificación del sistema</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="mensajeNotificacion"></p>
+            </div>
+            <div class="modal-footer">
+                @if (ViewBag.Eliminar == "True")
+                {
+                    <a href="@Url.Action("eliminarUsuario", new {id = @ViewBag.IdEliminar})" class="btn btn-warning text-white" )>
+                        <i class="fa fa-trash text-white"></i> Continuar
+                    </a>
+                }
+                <button type="button" id="btnCerrarNotificacion" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-minus"></i> Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @if (ViewBag.MostrarModal != null && ViewBag.MostrarModal)
+    {
+        <script src="~/Scripts/MostrarMensaje.js"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                var mensaje = "@ViewBag.Mensaje";
+                var tipo = @ViewBag.Tipo;
+                mostrarNotificacion(tipo, mensaje);
+            });
+        </script>
+    }
+    <script>
+        $(document).ready(function () {
+            $('#btnBuscar').click(function () {
+                actualizarTablaUsuarios();
+            });
+        });
+
+        function actualizarTablaUsuarios() {
+            // Obtener los valores de los filtros
+            var busqueda = $('#txtBusqueda').val();
+            //var filtro2 = $('#filtro2').val();
+
+            // Realizar la petición AJAX al controlador con los filtros
+            $.ajax({
+                url: '/Usuarios/Paginacion',
+                type: 'GET',
+                data: { busqueda: busqueda },
+                success: function (result) {
+                    // Actualizar la tabla con los resultados de la búsqueda
+                    $('#tablaQuejas').html(result);
+                },
+                error: function (error) {
+                    // Manejar el error en caso de que la petición falle
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    @if (ViewBag.MostrarModalNuevo != null && ViewBag.MostrarModalNuevo)
+    {
+        <script>
+            function mostrarModalNuevo() {
+                var modalNuevo = new bootstrap.Modal(document.getElementById('modalNuevo'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                modalNuevo.show();
+            }
+
+            $(document).ready(function () {
+                mostrarModalNuevo();
+            });
+        </script>
+
+    }
+}

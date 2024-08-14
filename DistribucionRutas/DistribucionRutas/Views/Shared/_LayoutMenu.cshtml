@@ -119,7 +119,7 @@
                         </a>
                     </li>
                 }
-                @if (ViewBag.Permisos.GestionUsuarios)
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionUsuarios)
                 {
                     <li class="nav-item">
                         <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Usuarios") { <text>active</text> }"

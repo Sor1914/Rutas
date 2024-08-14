@@ -22,5 +22,7 @@ namespace DistribucionRutas.Models
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int IdRol { get; set; }        
+        public string NombreRol {  get; set; }
+        public int Estado { get; set; }
     }
 }

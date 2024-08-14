@@ -70,6 +70,15 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Select Count(1) from Usuarios inner join Roles on Usuarios.IdRol = Roles.IdRol Where Usuarios.Estado = 1;.
+        /// </summary>
+        internal static string CuentaUsuarios {
+            get {
+                return ResourceManager.GetString("CuentaUsuarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a UPDATE Usuarios SET Estado = {2}, UsuarioModifico = &apos;{1}&apos;, FechaModifico = CURRENT_TIMESTAMP() where Usuario = &apos;{0}&apos;;.
         /// </summary>
         internal static string DesactivaUsuario {
@@ -79,7 +88,7 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select * from Roles Where estado =1.
+        ///   Busca una cadena traducida similar a Select * from Roles Where estado =1;.
         /// </summary>
         internal static string ObtieneRoles {
             get {
@@ -88,12 +97,11 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select Usuarios.*, Roles.Descripcion as Rol From Usuarios 
+        ///   Busca una cadena traducida similar a Select Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol From Usuarios 
         ///inner join Roles
         ///	on Usuarios.IdRol = Roles.IdRol
-        ///Where Usuarios.Estado = 1
         ///Order By Usuarios.usuario
-        ///OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY.
+        ///OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY;.
         /// </summary>
         internal static string ObtieneUsuarios {
             get {

@@ -9,6 +9,17 @@ namespace DistribucionRutas.Clases
 {
     public static class Util
     {
+        public static List<T> ConvertirDataTableALista<T>(DataTable table) where T : new()
+        {
+            List<T> lista = new List<T>();
+            foreach (DataRow row in table.Rows)
+            {
+                T obj = ConvertirDataRowAObjeto<T>(row);
+                lista.Add(obj);
+            }
+            return lista;
+        }
+
         public static T ConvertirDataRowAObjeto<T>(DataRow row) where T : new()
         {
             T obj = new T();

@@ -25,17 +25,29 @@ namespace DistribucionRutas.Clases
             var consulta = string.Format(
                     SqlUsuarios.DesactivaUsuario, 
                     usuario, usuarioModifico, estado);
+            conexionSql = new ClsConexionSql();
             return conexionSql.CrearDML(consulta);
         }
 
         public DataTable ObtenerRoles()
         {
+            conexionSql = new ClsConexionSql();
             return conexionSql.CrearConsulta(SqlUsuarios.ObtieneRoles);
         }
 
         public DataTable ObtenerUsuarios(int inicio, int cantidad)
         {
-            return conexionSql.CrearConsulta(SqlUsuarios.ObtieneUsuarios);
+            conexionSql = new ClsConexionSql();
+            var consulta = string.Format(SqlUsuarios.ObtieneUsuarios, inicio, cantidad);
+            return conexionSql.CrearConsulta(consulta);
+        }
+
+        public int CuentaUsuarios()
+        {
+            var dtCantidadUsuarios = conexionSql.CrearConsulta(SqlUsuarios.CuentaUsuarios);
+            var cantidadRegistros = Convert.ToInt32(dtCantidadUsuarios.Rows[0][0].ToString());
+            conexionSql = new ClsConexionSql();
+            return cantidadRegistros;
         }
     }
 }

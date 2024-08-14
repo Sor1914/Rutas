@@ -42,8 +42,8 @@ namespace DistribucionRutas.Controllers
                     var registrado = clsRegistro.RegistrarUsuario(Registro, "sys");
                     if (registrado)
                     {
-                        clsEnvioEmail = new ClsEnvioEmail();
-                        clsEnvioEmail.enviarCorreo(Registro.Email.Split(), "Bienvenido", crearHtmlRegistro(Registro.Nombres, Registro.Usuario));
+                        //clsEnvioEmail = new ClsEnvioEmail();
+                        //clsEnvioEmail.enviarCorreo(Registro.Email.Split(), "Bienvenido", crearHtmlRegistro(Registro.Nombres, Registro.Usuario));
                         return RedirectToAction("LoginWhenRegisterComplete", "Login");
                     }
                     else
