@@ -80,14 +80,11 @@ C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\bin\es\System.Web.WebPage
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.AssemblyReference.cache
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlLogin.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlRegistro.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlUsuarios.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.GenerateResource.cache
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.CoreCompileInputs.cache
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\Distribu.7443CCFA.Up2Date
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.dll
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.pdb
-C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlLogin.resources
-C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.GenerateResource.cache
-<<<<<<< Updated upstream
-=======
-C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlRegistro.resources
-C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlUsuarios.resources
->>>>>>> Stashed changes

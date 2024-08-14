@@ -1,9 +1,6 @@
 ﻿using DistribucionRutas.Consultas;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 
 namespace DistribucionRutas.Clases
 {
@@ -23,7 +20,7 @@ namespace DistribucionRutas.Clases
         public bool CambiarEstadoUsuario(string usuario, string usuarioModifico, int estado)
         {
             var consulta = string.Format(
-                    SqlUsuarios.DesactivaUsuario, 
+                    SqlUsuarios.DesactivaUsuario,
                     usuario, usuarioModifico, estado);
             conexionSql = new ClsConexionSql();
             return conexionSql.CrearDML(consulta);

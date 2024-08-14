@@ -2,12 +2,9 @@
 using DistribucionRutas.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace DistribucionRutas.Controllers
 {
@@ -17,11 +14,11 @@ namespace DistribucionRutas.Controllers
         string LAYOUTMENU = "~/Views/Shared/_LayoutMenu.cshtml";
 
         // GET: Usuarios
-        public UsuariosController() 
+        public UsuariosController()
         {
             ViewBag.Layout = LAYOUTMENU;
         }
-         public async Task<ActionResult> Usuarios(bool limpiar = true)
+        public async Task<ActionResult> Usuarios(bool limpiar = true)
         {
             if (limpiar)
             {
@@ -42,7 +39,7 @@ namespace DistribucionRutas.Controllers
                 ListaUsuarios = HttpContext.Cache["listaUsuarios"] as List<Usuarios>;
             else
             {
-                ListaUsuarios = Util.ConvertirDataTableALista<Usuarios>(clsUsuarios.ObtenerUsuarios(pagina, tamanoPagina));                    
+                ListaUsuarios = Util.ConvertirDataTableALista<Usuarios>(clsUsuarios.ObtenerUsuarios(pagina, tamanoPagina));
                 HttpContext.Cache.Insert("listaUsuarios", ListaUsuarios, null, DateTime.Now.AddMinutes(30), Cache.NoSlidingExpiration);
             }
             int cantidadRegistros = clsUsuarios.CuentaUsuarios();

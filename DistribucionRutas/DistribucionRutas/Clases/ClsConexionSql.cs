@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
+using System.Data.SqlClient;
 
 namespace DistribucionRutas.Clases
 {
@@ -26,7 +21,7 @@ namespace DistribucionRutas.Clases
             if (Conexion.State == ConnectionState.Open)
                 Conexion.Close();
             return Conexion;
-        }        
+        }
 
         public DataTable CrearConsulta(string consulta)
         {
@@ -48,7 +43,7 @@ namespace DistribucionRutas.Clases
             AbrirConexion();
             int i = cmd.ExecuteNonQuery();
             CerrarConexion();
-            return i > 0;      
+            return i > 0;
         }
     }
 }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DistribucionRutas.Clases;
+using DistribucionRutas.Models;
+using System;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using DistribucionRutas.Clases;
-using DistribucionRutas.Models;
 
 namespace DistribucionRutas.Controllers
 {
@@ -18,7 +14,7 @@ namespace DistribucionRutas.Controllers
         {
             ViewBag.Layout = LAYOUTLOGIN;
         }
-        
+
         public ActionResult Login()
         {
             //ClsEnvioEmail clsEnvioEmail = new ClsEnvioEmail();
@@ -63,7 +59,7 @@ namespace DistribucionRutas.Controllers
                         Session["usuario"] = loginResponse.Usuario;
                         Session["nombres"] = loginResponse.Nombres;
                         Session["apellidos"] = loginResponse.Apellidos;
-                        Session["Permisos"] = permisos;                      
+                        Session["Permisos"] = permisos;
                         return RedirectToAction("Bienvenida", "MenuPrincipal");
                     }
                     else
@@ -88,6 +84,6 @@ namespace DistribucionRutas.Controllers
             }
         }
 
-        
+
     }
 }

@@ -1,13 +1,6 @@
 ﻿using DistribucionRutas.Consultas;
 using DistribucionRutas.Models;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using DistribucionRutas.Clases;
 
 namespace DistribucionRutas.Clases
 {
@@ -21,7 +14,7 @@ namespace DistribucionRutas.Clases
             conexionSql = new ClsConexionSql();
             var consulta = string.Format(SqlLogin.ObtieneUsuario, usuario.Usuario, usuario.Contrasenia);
             var UsuarioDb = conexionSql.CrearConsulta(consulta);
-            
+
             if (UsuarioDb.Rows.Count > 0)
             {
                 usuarioResponse = Util.ConvertirDataRowAObjeto<Usuarios>(UsuarioDb.Rows[0]);
@@ -34,9 +27,9 @@ namespace DistribucionRutas.Clases
         {
             Permisos permisos = new Permisos()
             {
-                GestionUsuarios = IdRol == 1                
+                GestionUsuarios = IdRol == 1
             };
             return permisos;
-        }        
+        }
     }
 }

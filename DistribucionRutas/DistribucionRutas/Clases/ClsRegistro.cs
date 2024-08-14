@@ -1,10 +1,6 @@
 ﻿using DistribucionRutas.Consultas;
 using DistribucionRutas.Models;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
 
 namespace DistribucionRutas.Clases
 {
@@ -12,11 +8,11 @@ namespace DistribucionRutas.Clases
     {
         ClsConexionSql clsConexionSql;
         public bool RegistrarUsuario(Registro registro, string usuarioCreo)
-        {            
-            if (!ValidarUsuario(registro.Usuario))            
-                throw new Exception("El usuario ya existe");            
-            if (!ValidarEmail(registro.Email))            
-                throw new Exception("El Email ya existe para otro usuario");            
+        {
+            if (!ValidarUsuario(registro.Usuario))
+                throw new Exception("El usuario ya existe");
+            if (!ValidarEmail(registro.Email))
+                throw new Exception("El Email ya existe para otro usuario");
             var registroRespuesta = new Registro();
             var consulta = string.Format(
                 SqlRegistro.InsertaUsuario,
@@ -26,7 +22,7 @@ namespace DistribucionRutas.Clases
                 registro.Nombres,
                 registro.Apellidos,
                 usuarioCreo);
-            clsConexionSql = new ClsConexionSql();            
+            clsConexionSql = new ClsConexionSql();
             return clsConexionSql.CrearDML(consulta);
         }
 

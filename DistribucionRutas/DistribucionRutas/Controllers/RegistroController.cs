@@ -1,12 +1,7 @@
 ﻿using DistribucionRutas.Clases;
 using DistribucionRutas.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DistribucionRutas.Controllers
@@ -51,7 +46,7 @@ namespace DistribucionRutas.Controllers
                         ModelState.AddModelError(string.Empty, "Ocurrio un error, intente de nuevo");
                         return View("Registro");
                     }
-                }        
+                }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError(string.Empty, ex.Message);
