@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "C:\\Proyectos\\Rutas\\DistribucionRutas\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -20,18 +21,43 @@
     {
       "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\models\\permisos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\models\\permisos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\views\\usuarios\\_usuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\views\\usuarios\\_usuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\views\\usuarios\\usuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\views\\usuarios\\usuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+>>>>>>> Stashed changes
     },
     {
       "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\clases\\clslogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\clases\\clslogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\consultas\\sqllogin.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\consultas\\sqllogin.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+=======
+      "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\consultas\\sqlusuarios.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\consultas\\sqlusuarios.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\clases\\clsusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\clases\\clsusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|c:\\proyectos\\rutas\\distribucionrutas\\distribucionrutas\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97FD186A-B02E-4466-B925-A7043D46970E}|DistribucionRutas\\DistribucionRutas.csproj|solutionrelative:distribucionrutas\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -40,12 +66,18 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< Updated upstream
           "DockedWidth": 200,
           "SelectedChildIndex": 2,
+=======
+          "DockedWidth": 196,
+          "SelectedChildIndex": 5,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+<<<<<<< Updated upstream
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "DistribucionRutas\\Controllers\\HomeController.cs",
@@ -54,11 +86,22 @@
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-06T23:39:41.213Z",
+=======
+              "Title": "Usuarios.cshtml",
+              "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Views\\Usuarios\\Usuarios.cshtml",
+              "RelativeDocumentMoniker": "DistribucionRutas\\Views\\Usuarios\\Usuarios.cshtml",
+              "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Views\\Usuarios\\Usuarios.cshtml",
+              "RelativeToolTip": "DistribucionRutas\\Views\\Usuarios\\Usuarios.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T20:12:08.179Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+<<<<<<< Updated upstream
               "Title": "ModelMetadata.cs",
               "DocumentMoniker": "C:\\Users\\JSOR1\\AppData\\Local\\Temp\\.vsdbgsrc\\4c774b4b794a5f5b2421e30e61440fc1e2757b14e36ba0321ebad2feffdf31aa\\ModelMetadata.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\JSOR1\\AppData\\Local\\Temp\\.vsdbgsrc\\4c774b4b794a5f5b2421e30e61440fc1e2757b14e36ba0321ebad2feffdf31aa\\ModelMetadata.cs",
@@ -118,24 +161,83 @@
               "RelativeToolTip": "DistribucionRutas\\Consultas\\SqlLogin.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
               "WhenOpened": "2024-08-06T22:36:46.143Z",
+=======
+              "Title": "SqlUsuarios.resx",
+              "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Consultas\\SqlUsuarios.resx",
+              "RelativeDocumentMoniker": "DistribucionRutas\\Consultas\\SqlUsuarios.resx",
+              "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Consultas\\SqlUsuarios.resx",
+              "RelativeToolTip": "DistribucionRutas\\Consultas\\SqlUsuarios.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-08-14T20:10:48.602Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 5,
+=======
+              "DocumentIndex": 2,
+>>>>>>> Stashed changes
               "Title": "Usuarios.cs",
               "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Models\\Usuarios.cs",
               "RelativeDocumentMoniker": "DistribucionRutas\\Models\\Usuarios.cs",
               "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Models\\Usuarios.cs",
               "RelativeToolTip": "DistribucionRutas\\Models\\Usuarios.cs",
+<<<<<<< Updated upstream
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwBMAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-06T22:37:15.241Z",
+=======
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T20:10:27.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClsUsuarios.cs",
+              "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Clases\\ClsUsuarios.cs",
+              "RelativeDocumentMoniker": "DistribucionRutas\\Clases\\ClsUsuarios.cs",
+              "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Clases\\ClsUsuarios.cs",
+              "RelativeToolTip": "DistribucionRutas\\Clases\\ClsUsuarios.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T20:10:22.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "DistribucionRutas\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "DistribucionRutas\\Controllers\\UsuariosController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T20:10:18.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Usuarios.cshtml",
+              "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Views\\Usuarios\\_Usuarios.cshtml",
+              "RelativeDocumentMoniker": "DistribucionRutas\\Views\\Usuarios\\_Usuarios.cshtml",
+              "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Views\\Usuarios\\_Usuarios.cshtml",
+              "RelativeToolTip": "DistribucionRutas\\Views\\Usuarios\\_Usuarios.cshtml",
+              "ViewState": "AQIAACoAAAAAAAAAAABewEQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T17:52:52.705Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+<<<<<<< Updated upstream
               "Title": "ClsLogin.cs",
               "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Clases\\ClsLogin.cs",
               "RelativeDocumentMoniker": "DistribucionRutas\\Clases\\ClsLogin.cs",
@@ -144,6 +246,16 @@
               "ViewState": "AQIAAA8AAAAAAAAAAAAYwBIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-06T22:30:47.21Z",
+=======
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "DistribucionRutas\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Proyectos\\Rutas\\DistribucionRutas\\DistribucionRutas\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "DistribucionRutas\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAuwD8AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T17:07:32.411Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             }
           ]
