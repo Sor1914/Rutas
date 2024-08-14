@@ -188,6 +188,14 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\Shared\_LayoutMenu.cshtml" />
+    <Content Include="Views\MenuPrincipal\Bienvenida.cshtml" />
+    <Content Include="Views\Registro\Registro.cshtml" />
+    <Content Include="Views\Usuarios\_Usuarios.cshtml" />
+    <Content Include="Views\Usuarios\Usuarios.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
