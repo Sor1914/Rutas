@@ -85,6 +85,6 @@ C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRut
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlUsuarios.resources
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.GenerateResource.cache
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.CoreCompileInputs.cache
-C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\Distribu.7443CCFA.Up2Date
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.CopyComplete
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.dll
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.pdb

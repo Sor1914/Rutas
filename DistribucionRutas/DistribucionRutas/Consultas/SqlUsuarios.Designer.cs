@@ -61,7 +61,7 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = &apos;{2}&apos;, FechaModifico = CURRENT_TIMESTAMP() where Usuario = &apos;{1}&apos;;.
+        ///   Busca una cadena traducida similar a UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = &apos;{2}&apos;, FechaModifico = CURRENT_TIMESTAMP where Usuario = &apos;{1}&apos;;.
         /// </summary>
         internal static string AsignaRolUsuario {
             get {
@@ -70,7 +70,7 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select Count(1) from Usuarios inner join Roles on Usuarios.IdRol = Roles.IdRol Where Usuarios.Estado = 1;.
+        ///   Busca una cadena traducida similar a Select Count(1) from Usuarios inner join Roles on Usuarios.IdRol = Roles.IdRol 	WHERE CONCAT(usuarios.USUARIO,usuarios.EMAIL,usuarios.NOMBRES,usuarios.APELLIDOS) LIKE &apos;%{0}%&apos;;.
         /// </summary>
         internal static string CuentaUsuarios {
             get {
@@ -79,11 +79,11 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a UPDATE Usuarios SET Estado = {2}, UsuarioModifico = &apos;{1}&apos;, FechaModifico = CURRENT_TIMESTAMP() where Usuario = &apos;{0}&apos;;.
+        ///   Busca una cadena traducida similar a UPDATE Usuarios SET Estado = {2}, UsuarioModifico = &apos;{1}&apos;, FechaModifico = CURRENT_TIMESTAMP where Usuario = &apos;{0}&apos;;.
         /// </summary>
-        internal static string DesactivaUsuario {
+        internal static string GestionarUsuario {
             get {
-                return ResourceManager.GetString("DesactivaUsuario", resourceCulture);
+                return ResourceManager.GetString("GestionarUsuario", resourceCulture);
             }
         }
         
@@ -97,9 +97,10 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol From Usuarios 
+        ///   Busca una cadena traducida similar a Select ROW_NUMBER() OVER(Order By Usuarios.usuario ASC) AS Numero, Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol, Roles.IdRol From Usuarios
         ///inner join Roles
         ///	on Usuarios.IdRol = Roles.IdRol
+        ///	WHERE CONCAT(USUARIO,EMAIL,NOMBRES,APELLIDOS) LIKE &apos;%{2}%&apos;
         ///Order By Usuarios.usuario
         ///OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY;.
         /// </summary>

@@ -26,35 +26,65 @@
                             <p class="h10 text-black">Login</p>
                             <p class="h3 text-black">Ingresa tus Datos</p>
                             <p class="h1">-</p>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control text-center" } })
-                                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger control-label" })
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "10"} })
+                                        @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger control-label" })
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Contrasenia, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control text-center" } })
-                                @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger control-label" })
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Contrasenia, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "10" } })
+                                        @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger control-label" })
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.ConfirmContrasenia, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.ConfirmContrasenia, new { htmlAttributes = new { @class = "form-control text-center" } })
-                                @Html.ValidationMessageFor(model => model.ConfirmContrasenia, "", new { @class = "text-danger control-label" })
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ConfirmContrasenia, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.ConfirmContrasenia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "10" } })
+                                        @Html.ValidationMessageFor(model => model.ConfirmContrasenia, "", new { @class = "text-danger control-label" })
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control text-center" } })
-                                @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger control-label" })
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "50"} })
+                                        @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger control-label" })
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control text-center" } })
-                                @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger control-label" })
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "50" } })
+                                        @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger control-label" })
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control text-center" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger control-label" })
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "40" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger control-label" })
+                                    </div>
+                                </div>
                             </div>
                             @Html.ValidationSummary(true, "", new { @class = "text-danger control-label" })
 

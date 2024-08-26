@@ -150,6 +150,7 @@
     </Compile>
     <Compile Include="Models\Permisos.cs" />
     <Compile Include="Models\Registro.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -217,10 +218,11 @@
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
     <Content Include="Views\MenuPrincipal\Bienvenida.cshtml" />
     <Content Include="Views\Registro\Registro.cshtml" />
+    <Content Include="Views\Usuarios\Usuarios.cshtml" />
+    <Content Include="Views\Usuarios\_Usuarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

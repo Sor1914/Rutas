@@ -1,129 +1,121 @@
-﻿<div class="row bottom-100">
-    <div class="col-6 align-content-center">
-        <div class="input-group" role="group">
-            <div class="input-group-btn">
-                @if (ViewBag.PaginaActualTabla > 1)
-                {
-                    <button id="btnInicio" class="btn btn-default fa fa-step-backward"> </button>
-                    <button id="btnAtras" class="btn btn-default fa fa-backward"> </button>
-                }
-                else
-                {
-                    @Html.ActionLink(" ", "Paginacion", new { pagina = ViewBag.PaginaActualTabla - 1, tamanoPagina = ViewBag.TamanoPagina }, new { @class = "btn btn-default fa fa-step-backward disabled" })
-                    @Html.ActionLink(" ", "Paginacion", new { pagina = ViewBag.PaginaActualTabla, tamanoPagina = ViewBag.TamanoPagina }, new { @class = "btn btn-default fa fa-backward disabled" })
-                }
-                <text class="form text-center">@ViewBag.PaginaActualTabla de @ViewBag.TotalPaginas</text>
-                @if (ViewBag.PaginaActualTabla < ViewBag.TotalPaginas)
-                {
-                    <button id="btnSiguiente" class="btn btn-default fa fa-forward"> </button>
-                    <button id="btnFinal" class="btn btn-default fa fa-step-forward"> </button>
-                }
-                else
-                {
-                    @Html.ActionLink(" ", "Paginacion", new { listaObjetos = ViewBag.ListaTotalPuntos, pagina = ViewBag.PaginaActualTabla + 1, tamanoPagina = ViewBag.TamanoPagina }, new { @class = "btn btn-default fa fa-forward disabled" })
-                    @Html.ActionLink(" ", "Paginacion", new { listaObjetos = ViewBag.ListaTotalPuntos, pagina = ViewBag.PaginaActualTabla + 1, tamanoPagina = ViewBag.TamanoPagina }, new { @class = "btn btn-default fa fa-step-forward disabled" })
-                }
+﻿<div id="usuariosPartial">
+    <div class="row bottom-100">
+        <div class="col-6 align-content-center">
+            <div class="input-group" role="group">
+                <div class="input-group-btn">
+                    <button id="btnInicio" class="btn btn-default fa fa-step-backward" @(ViewBag.PaginaActualTabla <= 1 ? "disabled" : "")></button>
+                    <button id="btnAtras" class="btn btn-default fa fa-backward" @(ViewBag.PaginaActualTabla <= 1 ? "disabled" : "")></button>
 
+                    <text class="form text-center">@ViewBag.PaginaActualTabla de @ViewBag.TotalPaginas</text>
+
+                    <button id="btnSiguiente" class="btn btn-default fa fa-forward" @(ViewBag.PaginaActualTabla >= ViewBag.TotalPaginas ? "disabled" : "")></button>
+                    <button id="btnFinal" class="btn btn-default fa fa-step-forward" @(ViewBag.PaginaActualTabla >= ViewBag.TotalPaginas ? "disabled" : "")></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<br />
-<table class="table table-striped table-bordered table-hover" id="TablaQuejas">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Estado</th>
-            <th>Rol</th>
-            <th style="width:1%;">Editar</th>
-            <th style="width:1%;">Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (ViewBag.ListaTipos == null)
-        {
+    <br />
+    <table class="table table-striped table-bordered table-hover" id="tablaUsuariosPartial">
+        <thead>
             <tr>
-                <td colspan="7">No se encontraron registros.</td>
+                <th>No.</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Estado</th>
+                <th>Rol</th>
+                <th style="width:1%;">Editar</th>
+                <th style="width:1%;">Gestionar</th>
             </tr>
-        }
-        else
-        {
-            foreach (var fila in ViewBag.ListaTipos)
+        </thead>
+        <tbody>
+            @if (ViewBag.ListaTipos == null)
             {
                 <tr>
-                    <td>@fila.Nombres @fila.Apellidos</td>
-                    <td>@fila.Email</td>
-
-                    @if (fila.Estado == 1)
-                    {
-                        <td>
-                            Habilitado
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            Deshabilitado
-                        </td>
-                    }
-                    <td>@fila.NombreRol</td>
-                    <td>
-                        <a href="@Url.Action("mostrarModalEditar", new { Nombre =  @fila.Nombres + @fila.Apellidos})" class="btn btn-secondary">
-                            <i class="fa fa-edit text-white"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("notificarEliminacion", new {usuario = @fila.Usuario})" class="btn btn-danger" )>
-                            <i class="fa fa-trash text-white"></i>
-                        </a>
-                    </td>
+                    <td colspan="7">No se encontraron registros.</td>
                 </tr>
             }
-        }
-    </tbody>
-</table>
-<script src="/Scripts/jquery-3.3.1.min.js"></script>
+            else
+            {
+                foreach (var fila in ViewBag.ListaTipos)
+                {
+                    <tr>
+                        <td>@fila.Numero</td>
+                        <td>@fila.Nombres @fila.Apellidos</td>
+                        <td>@fila.Usuario</td>
+                        <td>@fila.Email</td>
+
+                        @if (fila.Estado == 1)
+                        {
+                            <td>
+                                Habilitado
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Deshabilitado
+                            </td>
+                        }
+                        <td>@fila.NombreRol</td>
+                        <td>
+                            <a href="@Url.Action("mostrarModalEditar", new { Usuario = @fila.Usuario, Nombre =  @fila.Nombres + @fila.Apellidos, IdRol = fila.IdRol})" class="btn btn-secondary">
+                                <i class="fa fa-edit text-white"></i>
+                            </a>
+                        </td>
+                        <td>
+                            @if (fila.Estado == 1)
+                            {
+                                <a href="@Url.Action("notificarEliminacion", new {usuario = @fila.Usuario, tipoGestion = "Desactivar"})" class="btn btn-danger" )>
+                                    <i class="fa fa-trash text-white"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("notificarEliminacion", new {usuario = @fila.Usuario, tipoGestion = "Activar"})" class="btn btn-success" )>
+                                    <i class="fa fa-check text-white"></i>
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<script src="/Scripts/jquery-3.7.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-         $('#btnSiguiente').click(function () {
-             paginar(1);
-        });
-     });
-
-    $(document).ready(function () {
-        $('#btnFinal').click(function () {
-            paginar(parseInt("@ViewBag.TotalPaginas") - 1);
-        });
-    });
-
-    $(document).ready(function () {
-        $('#btnAtras').click(function () {
-            paginar(-1);
-        });
-    });
-
-    $(document).ready(function () {
+     $(document).ready(function () {
         $('#btnInicio').click(function () {
-            paginar((parseInt("@ViewBag.PaginaActual") * -1) + 1);
+            cargarPagina(0);
         });
+
+        $('#btnAtras').click(function () {
+            cargarPagina(@(ViewBag.PaginaActualTabla - 2) * @ViewBag.TamanoPagina);
+        });
+
+        $('#btnSiguiente').click(function () {
+            cargarPagina(@ViewBag.PaginaActualTabla * @ViewBag.TamanoPagina);
+        });
+
+        $('#btnFinal').click(function () {
+            cargarPagina((@ViewBag.TotalPaginas - 1) * @ViewBag.TamanoPagina);
+        });
+
+        function cargarPagina(inicioRegistros) {
+             $.ajax({
+                url: '@Url.Action("Paginacion", "Usuarios")',
+                type: 'GET',
+                data: { inicioRegistros: inicioRegistros, tamanoPagina: @ViewBag.TamanoPagina, busqueda: "@ViewBag.ValorBusqueda"},
+                success: function (result) {
+                    $('#usuariosPartial').html(result); // Actualiza el contenido del div con el resultado
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error en la llamada AJAX:", error);
+                }
+            });
+        }
     });
-     function paginar(sumar) {
-         var nextPage = parseInt("@ViewBag.PaginaActualTabla") + sumar;
-             var tamanoPagina = "@ViewBag.TamanoPagina";
-             var busqueda = $('#txtBusqueda').val();
-                $.ajax({
-                    url: "/Usuarios/Paginacion",
-                    type: "GET",
-                    data: { busqueda: busqueda, pagina: nextPage, tamanoPagina: tamanoPagina },
-                    success: function (result) {
-                        $('#tablaQuejas').html(result);
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-    }
 </script>
 
 

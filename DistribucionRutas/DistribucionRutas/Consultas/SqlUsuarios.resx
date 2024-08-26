@@ -118,21 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AsignaRolUsuario" xml:space="preserve">
-    <value>UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = '{2}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{1}';</value>
+    <value>UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = '{2}', FechaModifico = CURRENT_TIMESTAMP where Usuario = '{1}';</value>
   </data>
   <data name="CuentaUsuarios" xml:space="preserve">
-    <value>Select Count(1) from Usuarios inner join Roles on Usuarios.IdRol = Roles.IdRol Where Usuarios.Estado = 1;</value>
+    <value>Select Count(1) from Usuarios inner join Roles on Usuarios.IdRol = Roles.IdRol 	WHERE CONCAT(usuarios.USUARIO,usuarios.EMAIL,usuarios.NOMBRES,usuarios.APELLIDOS) LIKE '%{0}%';</value>
   </data>
-  <data name="DesactivaUsuario" xml:space="preserve">
-    <value>UPDATE Usuarios SET Estado = {2}, UsuarioModifico = '{1}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{0}';</value>
+  <data name="GestionarUsuario" xml:space="preserve">
+    <value>UPDATE Usuarios SET Estado = {2}, UsuarioModifico = '{1}', FechaModifico = CURRENT_TIMESTAMP where Usuario = '{0}';</value>
   </data>
   <data name="ObtieneRoles" xml:space="preserve">
     <value>Select * from Roles Where estado =1;</value>
   </data>
   <data name="ObtieneUsuarios" xml:space="preserve">
-    <value>Select Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol From Usuarios 
+    <value>Select ROW_NUMBER() OVER(Order By Usuarios.usuario ASC) AS Numero, Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol, Roles.IdRol From Usuarios
 inner join Roles
 	on Usuarios.IdRol = Roles.IdRol
+	WHERE CONCAT(USUARIO,EMAIL,NOMBRES,APELLIDOS) LIKE '%{2}%'
 Order By Usuarios.usuario
 OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY;</value>
   </data>

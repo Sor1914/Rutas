@@ -171,12 +171,13 @@ VALUES
 ('Usuario', 'Sys');
 
 INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo)
-VALUES ('JSOR',ENCRYPTBYPASSPHRASE('JS0R', 'Sor1906197912' ),'jonathansor2000sm@gmail.com','Jonathan Elias','Sor Monroy',1, 'Sys');
+VALUES ('JSOR78',ENCRYPTBYPASSPHRASE('JS0R', 'Sor1906197912' ),'jonathansor2000sm@gmail.com','Jonathan Elias','Sor Monroy',1, 'Sys');
 
 --Querys para Desarrollo
 
 INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo)
 VALUES ('{0}',ENCRYPTBYPASSPHRASE('JS0R', '{1}' ),'{2}','{3}','{4}',3, 'Sys');
+
 
 
 Select * from usuarios
@@ -189,8 +190,8 @@ UPDATE Usuarios SET IdRol = {0}, UsuarioModifico = '{1}', FechaModifico = CURREN
 
 UPDATE Usuarios SET Estado = 0, UsuarioModifico = '{1}', FechaModifico = CURRENT_TIMESTAMP() where Usuario = '{0}';
 
-
 Select * from Roles Where estado =1 
+
 
 
 
@@ -200,3 +201,26 @@ inner join Roles
 Where Usuarios.Estado = 1
 Order By Usuarios.usuario
 OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY
+
+Select Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol From Usuarios 
+inner join Roles
+	on Usuarios.IdRol = Roles.IdRol
+Order By Usuarios.usuario
+OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY;
+
+UPDATE Usuarios SET IdRol = 2, UsuarioModifico = 'JSOR', FechaModifico = CURRENT_TIMESTAMP where Usuario = '';
+
+Select ROW_NUMBER() OVER(Order By Usuarios.usuario ASC) AS No, Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol, Roles.IdRol From Usuarios
+inner join Roles
+	on Usuarios.IdRol = Roles.IdRol
+Order By Usuarios.usuario
+OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY;
+
+UPDATE Usuarios SET Estado = 0, UsuarioModifico = 'JSOR', FechaModi	fico = CURRENT_TIMESTAMP() where Usuario = 'JSOR3';
+
+
+Select ROW_NUMBER() OVER(Order By Usuarios.usuario ASC) AS Numero, Usuarios.Usuario, Usuarios.Email, Usuarios.Nombres, Usuarios.Apellidos, Usuarios.Estado, Roles.Descripcion as NombreRol, Roles.IdRol From Usuarios
+inner join Roles
+	on Usuarios.IdRol = Roles.IdRol
+	WHERE USUARIO|EMAIL||NOMBRES||APELLIDOS LIKE '%J%'
+Order By Usuarios.usuario
