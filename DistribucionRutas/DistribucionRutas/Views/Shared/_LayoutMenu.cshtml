@@ -119,6 +119,36 @@
                         </a>
                     </li>
                 }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionConductores)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Conductores") { <text>active</text> }"
+                           href='@Url.Action("Conductores", "Conductores")'>
+                            <i class="fa fa-user-circle"></i>
+                            Conductores
+                        </a>
+                    </li>
+                }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionTipoVehiculo)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "TipoVehiculo") { <text>active</text> }"
+                           href='@Url.Action("TipoVehiculo", "TipoVehiculo")'>
+                            <i class="fa fa-car"></i>
+                            Tipo Vehiculo
+                        </a>
+                    </li>
+                }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionVehiculos)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Vehiculos") { <text>active</text> }"
+                           href='@Url.Action("Vehiculos", "Vehiculos")'>
+                            <i class="fa fa-car"></i>
+                            Vehículos
+                        </a>
+                    </li>
+                }
                 @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionUsuarios)
                 {
                     <li class="nav-item">
@@ -128,7 +158,27 @@
                             Usuarios
                         </a>
                     </li>
-                } 
+                }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionProveedores)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Proveedores") { <text>active</text> }"
+                           href='@Url.Action("Proveedores", "Proveedores")'>
+                            <i class="fa fa-industry"></i>
+                            Proveedores
+                        </a>
+                    </li>
+                }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).GestionProductos)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Productos") { <text>active</text> }"
+                           href='@Url.Action("Productos", "Productos")'>
+                            <i class="fa fa-product-hunt"></i>
+                            Productos
+                        </a>
+                    </li>
+                }
             </ul>
             <hr>
             <div class="dropdown">

@@ -88,3 +88,9 @@ C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRut
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.csproj.CopyComplete
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.dll
 C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.pdb
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlConductores.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlTipoVehiculo.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlVehiculos.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlProveedores.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlRegistros.resources
+C:\Proyectos\Rutas\DistribucionRutas\DistribucionRutas\obj\Debug\DistribucionRutas.Consultas.SqlProductos.resources

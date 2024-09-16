@@ -120,38 +120,84 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Clases\ClsConductores.cs" />
     <Compile Include="Clases\ClsConexionSql.cs" />
     <Compile Include="Clases\ClsEnvioEmail.cs" />
     <Compile Include="Clases\ClsLogin.cs" />
+    <Compile Include="Clases\ClsProductos.cs" />
+    <Compile Include="Clases\ClsProveedores.cs" />
     <Compile Include="Clases\ClsRegistro.cs" />
+    <Compile Include="Clases\ClsTipoVehiculo.cs" />
     <Compile Include="Clases\ClsUsuarios.cs" />
+    <Compile Include="Clases\ClsVehiculos.cs" />
     <Compile Include="Clases\Util.cs" />
+    <Compile Include="Clases\Validations.cs" />
+    <Compile Include="Consultas\SqlConductores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlConductores.resx</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\SqlLogin.Designer.cs">
       <DependentUpon>SqlLogin.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Consultas\SqlProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlProductos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\SqlProveedores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlProveedores.resx</DependentUpon>
     </Compile>
     <Compile Include="Consultas\SqlRegistro.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SqlRegistro.resx</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\SqlRegistros.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlRegistros.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\SqlTipoVehiculo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlTipoVehiculo.resx</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\SqlUsuarios.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SqlUsuarios.resx</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\SqlVehiculos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlVehiculos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ConductoresController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuPrincipalController.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\TipoVehiculoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VehiculosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Productos.cs" />
+    <Compile Include="Models\Conductores.cs" />
     <Compile Include="Models\Permisos.cs" />
+    <Compile Include="Models\Proveedores.cs" />
     <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\TipoVehiculo.cs" />
     <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="Models\Vehiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +266,16 @@
     <Content Include="Views\Registro\Registro.cshtml" />
     <Content Include="Views\Usuarios\Usuarios.cshtml" />
     <Content Include="Views\Usuarios\_Usuarios.cshtml" />
+    <Content Include="Views\Conductores\Conductores.cshtml" />
+    <Content Include="Views\Conductores\_Conductores.cshtml" />
+    <Content Include="Views\TipoVehiculo\_TipoVehiculo.cshtml" />
+    <Content Include="Views\TipoVehiculo\TipoVehiculo.cshtml" />
+    <Content Include="Views\Vehiculos\_Vehiculos.cshtml" />
+    <Content Include="Views\Vehiculos\Vehiculos.cshtml" />
+    <Content Include="Views\Proveedores\_Proveedores.cshtml" />
+    <Content Include="Views\Proveedores\Proveedores.cshtml" />
+    <Content Include="Views\Productos\_Productos.cshtml" />
+    <Content Include="Views\Productos\Productos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,17 +308,41 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Consultas\SqlConductores.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlConductores.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\SqlLogin.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlLogin.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlProductos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlProductos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlProveedores.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlProveedores.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\SqlRegistro.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlRegistro.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlRegistros.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlRegistros.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlTipoVehiculo.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlTipoVehiculo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\SqlUsuarios.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlUsuarios.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlVehiculos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlVehiculos.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

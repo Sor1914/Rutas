@@ -1,0 +1,217 @@
+﻿@model DistribucionRutas.Models.Conductores
+
+@{
+    ViewBag.Title = "Conductores";
+    Layout = ViewBag.Layout;
+}
+
+<div class="container" style="margin-top: 15px; margin-bottom: 15px">
+    <div class="card" style="margin-top: 15px">
+        <h5 class="card-header">Conductores</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 d-grid gap-2 d-flex justify-content-end">
+                </div>
+                <div class="col-md-6 d-grid gap-2 d-flex justify-content-end">
+                    <a href="@Url.Action("mostrarModalNuevo", new {})" class="btn btn-outline-dark my-action-link">
+                        Agregar <i class="fa fa-plus-circle"></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="input-group mb-3">
+                        <div class="input-group mb-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5  gap-2  justify-content-end">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">Nombre</span>
+                        <input id="txtBusqueda" placeholder="Nombre" class="form-control" />
+                        <button id="btnBuscar" class="btn btn-outline-dark fa fa-search my-action-link"></button>
+                    </div>
+                </div>
+                <hr />
+                <div id="tablaUsuario">
+                    @Html.Partial("_Conductores")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalNotificacion" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div id="headerNotificacion" class="modal-header">
+                <h5 class="modal-title text-white">Notificación del sistema</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="mensajeNotificacion"></p>
+            </div>
+            <div class="modal-footer">
+                @if (ViewBag.Eliminar == "True")
+                {
+                    <a href="@Url.Action("CambiarEstado", new {licencia = @ViewBag.idEliminar, tipoGestion = @ViewBag.tipoGestion})" class="btn btn-warning text-white" )>
+                        <i class="fa fa-trash text-white"></i> Continuar
+                    </a>
+                }
+                <button type="button" id="btnCerrarNotificacion" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-minus"></i> Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <input id="modalAccion" value="@ViewBag.ModalAccion" type="hidden" runat="server" />
+                        <h5 class="modal-title" id="modalHeader" runat="server"></h5>
+                    </ContentTemplate>
+                    <h5>@ViewBag.TituloModal</h5>
+                </asp:UpdatePanel>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("GuardarModal", "Conductores", new { usuarioModificado = @ViewBag.Usuario, licencia = @ViewBag.Licencia}, FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            @if(ViewBag.Editar != "True")
+                            {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Licencia, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Licencia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "13" } })
+                                @Html.ValidationMessageFor(model => model.Licencia, "", new { @class = "text-danger control-label" })
+                            </div>
+                            }
+                            else
+                            {
+                                <label class="control-label">Licencia</label>
+                                <label class="form-control disabled">@ViewBag.Licencia</label>
+                            }
+
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TipoLicencia, htmlAttributes: new { @class = "control-label" })
+                                @Html.DropDownListFor(model => model.TipoLicencia, (List<SelectListItem>)ViewBag.tipoLicenciaSelectList, "Seleccionar Tipo Licencia", new { @class = "form-select", id = "regiones-select-modal", onchange = "" })
+                                @Html.ValidationMessageFor(model => model.TipoLicencia, "", new { @class = "text-danger control-label" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.idHorario, htmlAttributes: new { @class = "control-label" })
+                                @Html.DropDownListFor(model => model.idHorario, (List<SelectListItem>)ViewBag.horarioSelectList, "Seleccionar Horario", new { @class = "form-select", id = "regiones-select-modal", onchange = "" })
+                                @Html.ValidationMessageFor(model => model.idHorario, "", new { @class = "text-danger control-label" })
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LimiteParadas, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.LimiteParadas, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "14" } })
+                                @Html.ValidationMessageFor(model => model.LimiteParadas, "", new { @class = "text-danger control-label" })
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                @if (ViewBag.Editar != "True")
+                                {
+                                    @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "form-label" })
+                                    @Html.DropDownListFor(model => model.Usuario, (List<SelectListItem>)ViewBag.usuarioSelectedList, "Seleccionar Usuario", new { @class = "form-select", id = "regiones-select-modal", onchange = "" })
+                                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger control-label" })
+                                }
+                                else
+                                {
+                                    <label class="control-label">Nombre</label>
+                                    <label class="form-control disabled">@ViewBag.Usuario</label>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <button type="submit" name="btnGuardar" id="guardarModal" class="btn btn-dark my-action-link">
+                                Guardar <i class="fa fa-save"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar <i class="fa fa-close"></i></button>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @if (ViewBag.MostrarModal != null && ViewBag.MostrarModal)
+    {
+        <script src="~/Scripts/MostrarMensaje.js"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                var mensaje = "@ViewBag.Mensaje";
+                var tipo = @ViewBag.Tipo;
+                mostrarNotificacion(tipo, mensaje);
+            });
+        </script>
+    }
+    <script>
+        $(document).ready(function () {
+            $('#btnBuscar').click(function () {
+                actualizarTablaUsuarios();
+            });
+        });
+
+        function actualizarTablaUsuarios() {
+            // Obtener los valores de los filtros
+            var busqueda = $('#txtBusqueda').val();
+            //var filtro2 = $('#filtro2').val();
+            // Realizar la petición AJAX al controlador con los filtros
+            $.ajax({
+                url: '/Conductores/Paginacion',
+                type: 'GET',
+                data: { busqueda: busqueda },
+                success: function (result) {
+                    // Actualizar la tabla con los resultados de la búsqueda
+                    $('#tablaUsuario').html(result);
+                },
+                error: function (error) {
+                    // Manejar el error en caso de que la petición falle
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    @if (ViewBag.MostrarModalNuevo!= null && ViewBag.MostrarModalNuevo)
+    {
+        <script>
+            function mostrarModalNuevo() {
+                var modalNuevo = new bootstrap.Modal(document.getElementById('modalNuevo'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                modalNuevo.show();
+            }
+
+            $(document).ready(function () {
+                mostrarModalNuevo();
+            });
+        </script>
+
+    }
+}
+

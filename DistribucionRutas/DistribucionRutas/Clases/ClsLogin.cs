@@ -27,7 +27,12 @@ namespace DistribucionRutas.Clases
         {
             Permisos permisos = new Permisos()
             {
-                GestionUsuarios = IdRol == 1
+                GestionUsuarios = IdRol == 1,
+                GestionConductores = IdRol == 1,
+                GestionTipoVehiculo = IdRol == 1,
+                GestionVehiculos = IdRol == 1,
+                GestionProveedores = IdRol == 1,
+                GestionProductos = IdRol == 1
             };
             return permisos;
         }

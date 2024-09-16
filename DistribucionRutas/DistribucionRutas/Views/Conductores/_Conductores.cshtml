@@ -1,0 +1,126 @@
+﻿<div id="partial">
+    <div class="row bottom-100">
+        <div class="col-6 align-content-center">
+            <div class="input-group" role="group">
+                <div class="input-group-btn">
+                    <button id="btnInicio" class="btn btn-default fa fa-step-backward" @(ViewBag.PaginaActualTabla <= 1 ? "disabled" : "")></button>
+                    <button id="btnAtras" class="btn btn-default fa fa-backward" @(ViewBag.PaginaActualTabla <= 1 ? "disabled" : "")></button>
+
+                    <text class="form text-center">@ViewBag.PaginaActualTabla de @ViewBag.TotalPaginas</text>
+
+                    <button id="btnSiguiente" class="btn btn-default fa fa-forward" @(ViewBag.PaginaActualTabla >= ViewBag.TotalPaginas ? "disabled" : "")></button>
+                    <button id="btnFinal" class="btn btn-default fa fa-step-forward" @(ViewBag.PaginaActualTabla >= ViewBag.TotalPaginas ? "disabled" : "")></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <table class="table table-striped table-bordered table-hover" id="tablaUsuariosPartial">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Licencia</th>
+                <th>Tipo</th>
+                <th>Horario</th>
+                <th>Limite Par.</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th style="width:1%;">Editar</th>
+                <th style="width:1%;">Gestionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.ListaTipos == null)
+            {
+                <tr>
+                    <td colspan="7">No se encontraron registros.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var fila in ViewBag.ListaTipos)
+                {
+        <tr>
+            <td>@fila.Numero</td>
+            <td>@fila.Licencia</td>
+            <td>@fila.TipoLicencia</td>
+            <td>@fila.idHorario</td>
+            <td>@fila.LimiteParadas</td>
+            <td>@fila.Usuario</td>
+            @if (fila.Estado == 1)
+            {
+                <td>
+                    Habilitado
+                </td>
+            }
+            else
+            {
+                <td>
+                    Deshabilitado
+                </td>
+            }
+            <td>
+                <a href="@Url.Action("mostrarModalEditar", new { tipoLicencia = @fila.TipoLicencia,
+                                                                idHorario =  @fila.idHorario,
+                                                                LimiteParadas = @fila.LimiteParadas,
+                                                                licencia = @fila.Licencia,
+                                                                usuario = fila.Usuario})" class="btn btn-secondary">
+                    <i class="fa fa-edit text-white"></i>
+                </a>
+            </td>
+            <td>
+                @if (fila.Estado == 1)
+                {
+                    <a href="@Url.Action("notificarEliminacion", new {licencia = @fila.Licencia, tipo = "Desactivar"})" class="btn btn-danger" )>
+                        <i class="fa fa-trash text-white"></i>
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("notificarEliminacion", new {licencia = @fila.Licencia, tipo = "Activar"})" class="btn btn-success" )>
+                        <i class="fa fa-check text-white"></i>
+                    </a>
+                }
+            </td>
+        </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<script src="/Scripts/jquery-3.7.0.min.js"></script>
+<script>
+     $(document).ready(function () {
+        $('#btnInicio').click(function () {
+            cargarPagina(0);
+        });
+
+        $('#btnAtras').click(function () {
+            cargarPagina(@(ViewBag.PaginaActualTabla - 2) * @ViewBag.TamanoPagina);
+        });
+
+        $('#btnSiguiente').click(function () {
+            cargarPagina(@ViewBag.PaginaActualTabla * @ViewBag.TamanoPagina);
+        });
+
+        $('#btnFinal').click(function () {
+            cargarPagina((@ViewBag.TotalPaginas - 1) * @ViewBag.TamanoPagina);
+        });
+
+        function cargarPagina(inicioRegistros) {
+             $.ajax({
+                url: '@Url.Action("Paginacion", "Conductores")',
+                type: 'GET',
+                data: { inicioRegistros: inicioRegistros, tamanoPagina: @ViewBag.TamanoPagina, busqueda: "@ViewBag.ValorBusqueda"},
+                success: function (result) {
+                    $('#partial').html(result); // Actualiza el contenido del div con el resultado
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error en la llamada AJAX:", error);
+                }
+            });
+        }
+    });
+</script>
+
+

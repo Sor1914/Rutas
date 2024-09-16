@@ -48,5 +48,6 @@ namespace DistribucionRutas.Clases
             conexionSql = new ClsConexionSql();
             return cantidadRegistros;
         }
+
     }
 }

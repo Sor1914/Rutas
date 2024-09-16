@@ -51,14 +51,14 @@ namespace DistribucionRutas.Controllers
             return PartialView("_Usuarios");
         }
 
-        public async Task<ActionResult> notificarEliminacion(string usuario, string tipo)
+        public async Task<ActionResult> notificarEliminacion(string usuario, string tipoGestion)
         {
             try
             {
-                ViewBag.TipoGestion = tipo;
+                ViewBag.TipoGestion = tipoGestion;
                 ViewBag.IdEliminar = usuario;
                 ViewBag.Eliminar = "True";
-                string mensaje = $"¿Está seguro de {tipo} este usuario?";
+                string mensaje = $"¿Está seguro de {tipoGestion} este usuario?";
                 Util.MostrarMensaje(ViewBag, mensaje, 4);
                 return await Usuarios(false);
             }
@@ -104,13 +104,13 @@ namespace DistribucionRutas.Controllers
             ViewBag.RolSelectList = rolesSelectList;
         }
 
-        public async Task<ActionResult> CambiarEstadoUsuario(string usuario, string tipo)
-        {
+        public async Task<ActionResult> CambiarEstadoUsuario(string usuario, string tipoGestion)
+         {
             try
             {
                 int estado;
                 string mensaje;
-                if (tipo.Equals("Activar"))
+                if (tipoGestion.Equals("Activar"))
                 {
                     estado = 1;
                     mensaje = "El usuario se activó correctamente";
