@@ -92,6 +92,25 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a delete proveedorProducto where IdProveedor = {0} and IdProducto = {1}.
+        /// </summary>
+        internal static string EliminaProveedorProducto {
+            get {
+                return ResourceManager.GetString("EliminaProveedorProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a insert into ProveedorProducto (IdProveedor, IdProducto, PrecioProducto, Existencia, Estado, UsuarioCreo, FechaCreo)
+        ///values ({0}, {1}, {2}, {3}, 1, &apos;{4}&apos;, CURRENT_TIMESTAMP).
+        /// </summary>
+        internal static string InsertaProveedorProducto {
+            get {
+                return ResourceManager.GetString("InsertaProveedorProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a insert into Productos(NombreProducto, TipoProducto, PesoProducto, Estado, UsuarioCreo, FechaCreo)
         ///values(&apos;{0}&apos;, &apos;{1}&apos;,{2}, 1, &apos;{3}&apos;, CURRENT_TIMESTAMP);.
         /// </summary>
@@ -113,6 +132,39 @@ namespace DistribucionRutas.Consultas {
         internal static string ObtieneDatos {
             get {
                 return ResourceManager.GetString("ObtieneDatos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select * from proveedor where estado = 1.
+        /// </summary>
+        internal static string ObtieneProveedores {
+            get {
+                return ResourceManager.GetString("ObtieneProveedores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a select 
+        ///ROW_NUMBER() OVER(Order by proveedorProducto.FechaCreo ASC) as Numero,
+        ///proveedor.NombreProveedor,
+        ///productos.NombreProducto,
+        ///proveedorProducto.PrecioProducto,
+        ///proveedorProducto.Existencia,
+        ///proveedorProducto.UsuarioCreo,
+        ///proveedorProducto.FechaCreo,
+        ///proveedorProducto.Estado,
+        ///proveedorProducto.IdProducto,
+        ///proveedorProducto.IdProveedor
+        ///from proveedorProducto
+        ///inner join proveedor 
+        ///on proveedorProducto.IdProveedor = proveedor.IdProveedor
+        ///inner join productos
+        ///on productos.idProducto = provee [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string ObtieneProveedorProducto {
+            get {
+                return ResourceManager.GetString("ObtieneProveedorProducto", resourceCulture);
             }
         }
     }

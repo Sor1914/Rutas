@@ -101,7 +101,7 @@ namespace DistribucionRutas.Consultas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a select * from Conductores where Licencia not in (select Licencia from vehiculos where licencia = Conductores.Licencia and estado = 1) and estado = 1;.
+        ///   Busca una cadena traducida similar a select * from Conductores where Licencia not in (select LicenciaConductor from vehiculos where licencia = Conductores.Licencia and estado = 1) and estado = 1;.
         /// </summary>
         internal static string ObtieneConductores {
             get {

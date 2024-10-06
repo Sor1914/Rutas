@@ -4,7 +4,11 @@
     ViewBag.Title = "Proveedores";
     Layout = ViewBag.Layout;
 }
-
+<style>
+    .pac-container {
+        z-index: 10000 !important;
+    }
+</style>
 <div class="container" style="margin-top: 15px; margin-bottom: 15px">
     <div class="card" style="margin-top: 15px">
         <h5 class="card-header">Vehiculos </h5>
@@ -86,15 +90,15 @@
                         <div class="col-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.NombreProveedor, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.NombreProveedor, new { htmlAttributes = new { @class = "form-control", maxlength = "13" } })
+                                @Html.EditorFor(model => model.NombreProveedor, new { htmlAttributes = new { @class = "form-control", maxlength = "50" } })
                                 @Html.ValidationMessageFor(model => model.NombreProveedor, "", new { @class = "text-danger control-label" })
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                    @Html.LabelFor(model => model.DireccionProveedor, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.DireccionProveedor, new { htmlAttributes = new { @class = "form-control", maxlength = "13" } })
-                                    @Html.ValidationMessageFor(model => model.DireccionProveedor, "", new { @class = "text-danger control-label" })
+                                @Html.LabelFor(model => model.DireccionProveedor, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.DireccionProveedor, new { htmlAttributes = new { @class = "form-control", maxlength = "50" } })
+                                @Html.ValidationMessageFor(model => model.DireccionProveedor, "", new { @class = "text-danger control-label" })
                             </div>
                         </div>
                     </div>
@@ -102,20 +106,32 @@
                         <div class="col-6">
                             <div class="form-group">
 
-                                    @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control", maxlength = "13" } })
-                                    @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger control-label" })
-                                
+                                @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label " })
+                                @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control Disabled", @id = "Longitude", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger control-label" })
+
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                               
-                                    @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control", maxlength = "13" } })
-                                    @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger control-label" })
-                                
+                                @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label Disabled" })
+                                @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control Disabled", @id = "Latitude", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger control-label" })
+
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="control-label">Buscar Un Lugar</label>
+                            <input id="autocomplete" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="map" style="height: 400px; width: 100%;"></div>
                         </div>
                     </div>
                 </div>
@@ -134,7 +150,13 @@
     </div>
 </div>
 
+
+
 @section Scripts{
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQ2h8AjrSygo-Oug8kVv_p8ghtyPAO-M&libraries=places,map,marker"></script>
+
+
     @if (ViewBag.MostrarModal != null && ViewBag.MostrarModal)
     {
         <script src="~/Scripts/MostrarMensaje.js"></script>
@@ -147,8 +169,11 @@
                 mostrarNotificacion(tipo, mensaje);
             });
         </script>
+
     }
+
     <script>
+
         $(document).ready(function () {
             $('#btnBuscar').click(function () {
                 actualizarTablaUsuarios();
@@ -174,6 +199,7 @@
                 }
             });
         }
+
     </script>
 
     @if (ViewBag.MostrarModalNuevo != null && ViewBag.MostrarModalNuevo)
@@ -193,6 +219,8 @@
         </script>
 
     }
+
+
 }
 
 

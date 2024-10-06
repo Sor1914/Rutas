@@ -32,7 +32,9 @@ namespace DistribucionRutas.Clases
                 GestionTipoVehiculo = IdRol == 1,
                 GestionVehiculos = IdRol == 1,
                 GestionProveedores = IdRol == 1,
-                GestionProductos = IdRol == 1
+                GestionProductos = IdRol == 1,
+                Pedidos = IdRol == 1,
+                Rutas = IdRol == 1
             };
             return permisos;
         }

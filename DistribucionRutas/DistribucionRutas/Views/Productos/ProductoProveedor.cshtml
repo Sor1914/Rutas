@@ -1,0 +1,69 @@
+﻿@model DistribucionRutas.Models.ProveedorProducto
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <input id="modalAccion" value="@ViewBag.ModalAccion" type="hidden" runat="server" />
+                    <h5 class="modal-title" id="modalHeader" runat="server"></h5>
+                </ContentTemplate>
+                <h5>@ViewBag.TituloModal</h5>
+            </asp:UpdatePanel>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        @using (Html.BeginForm("GuardarProductoProveedor", "Productos", new { idProducto = @ViewBag.idProducto }, FormMethod.Post))
+        {
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @if (ViewBag.listaProveedores != null)
+                            {
+                                @Html.LabelFor(model => model.IdProveedor, htmlAttributes: new { @class = "control-label" })
+                                @Html.DropDownListFor(model => model.IdProveedor, (List<SelectListItem>)ViewBag.listaProveedores, "Seleccionar Tipo", new { @class = "form-select", id = "regiones-select-modal", onchange = "" })
+                                @Html.ValidationMessageFor(model => model.IdProveedor, "", new { @class = "text-danger control-label" })
+                            }
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PrecioProducto, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.PrecioProducto, new { htmlAttributes = new { @class = "form-control", maxlength = "13" } })
+                            @Html.ValidationMessageFor(model => model.PrecioProducto, "", new { @class = "text-danger control-label" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Existencia, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Existencia, new { htmlAttributes = new { @class = "form-control", maxlength = "13" } })
+                            @Html.ValidationMessageFor(model => model.Existencia, "", new { @class = "text-danger control-label" })
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <button type="submit" name="btnGuardar" id="guardarModal" class="btn btn-dark my-action-link">
+                            Guardar <i class="fa fa-save"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar <i class="fa fa-close"></i></button>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        }
+    </div>
+</div>
+

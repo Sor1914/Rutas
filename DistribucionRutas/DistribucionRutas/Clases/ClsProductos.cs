@@ -60,5 +60,46 @@ namespace DistribucionRutas.Clases
             conexionSql = new ClsConexionSql();
             return conexionSql.CrearDML(consulta);
         }
+
+        public bool InsertarProveedorProducto(ProveedorProducto dato, string usuarioCreo) 
+        {
+            string consulta = string.Format(SqlProductos.InsertaProveedorProducto,
+                                            dato.IdProveedor,
+                                            dato.IdProducto,
+                                            dato.PrecioProducto,
+                                            dato.Existencia,
+                                            usuarioCreo
+                                            );
+            conexionSql = new ClsConexionSql();
+            return conexionSql.CrearDML(consulta);
+        }
+
+        public List<Proveedores> obtenerProveedores()
+        {
+            var consulta = string.Format(SqlProductos.ObtieneProveedores); ;
+            conexionSql = new ClsConexionSql();
+            var dtProveedores = conexionSql.CrearConsulta(consulta);
+            List<Proveedores> lista = Util.ConvertirDataTableALista<Proveedores>(dtProveedores);
+            return lista;
+        }
+
+        public List<ProveedorProducto> ObtenerProveedorProducto(int idProducto)
+        {
+            var consulta = string.Format(SqlProductos.ObtieneProveedorProducto, idProducto);
+            conexionSql = new ClsConexionSql();
+            var dtProveedorProducto = conexionSql.CrearConsulta(consulta);
+            List<ProveedorProducto> lista = Util.ConvertirDataTableALista<ProveedorProducto>(dtProveedorProducto);
+            return lista;
+        }
+
+        public bool ActualizarEstadoProveedorProducto(int idProveedor, int idProducto)
+        {
+            string consulta = string.Format(SqlProductos.EliminaProveedorProducto,
+                                                            idProveedor,
+                                                            idProducto);
+            conexionSql = new ClsConexionSql();
+            return conexionSql.CrearDML(consulta);
+        }
+
     }
 }

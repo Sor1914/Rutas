@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Conductores";
+    Layout = ViewBag.Layout;
+}
+<style>
+    /* Define el tamaño del mapa */
+    #ruteMap {
+        height: 500px;
+        width: 100%;
+    }
+</style>
+<div class="container" style="margin-top: 15px; margin-bottom: 15px">
+    <div class="card" style="margin-top: 15px">
+        <h5 class="card-header">Conductores</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 d-grid gap-2 d-flex justify-content-end">
+                    <label class="form-label">Distancia:</label>
+                    <input type="text" class="form-control disabled" id="kmDistancia" value="" />
+
+                </div>
+                <div class="col-md-3 d-grid gap-2 d-flex justify-content-end">
+                </div>
+                <div class="col-md-6 d-grid gap-2 d-flex justify-content-end">
+                    @if (ViewBag.listaRutas != null)
+                    {
+                        @Html.Label("Selecciona una opción", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("OpcionSeleccionada", (List<SelectListItem>)ViewBag.listaRutas, "Seleccione una opción", new { @class = "form-control", @id = "opcionesDropdown" })
+                    }
+                </div>
+            </div>
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="input-group mb-3">
+                        <div class="input-group mb-3">
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div id="ruteMap"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQ2h8AjrSygo-Oug8kVv_p8ghtyPAO-M&libraries=places,map,marker"></script>
+    <script src="~/Scripts/RuteMap.js"></script>
+    <script>
+
+        $(document).ready(function () {
+        // Al cambiar la opción en el dropdown
+        $('#opcionesDropdown').change(function () {
+            var selectedId = $(this).val(); // Obtener el ID seleccionado
+
+            // Si selecciona una opción válida (evitar enviar el valor por defecto)
+            if (selectedId) {
+                // Realizar una llamada AJAX para enviar el ID al controlador
+                $.ajax({
+                    url: '@Url.Action("ObtenerRutas", "Ruta")', // Método del controlador
+                    type: 'POST',
+                    data: { id: selectedId }, // Enviar el ID seleccionado
+                    success: function (result) {
+                        var latitudInicial = parseFloat(result.latitudInicial);
+                        var longitudInicial = parseFloat(result.longitudInicial);
+                        var latitudFinal = parseFloat(result.latitudFinal);
+                        var longitudFinal = parseFloat(result.longitudFinal);
+                        if (result) {
+                            initRuteMap(latitudInicial, longitudInicial, latitudFinal, longitudFinal);
+                        } else {
+                            console.log("No se encontró la ruta.");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // Manejar cualquier error en la solicitud
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    });
+    </script>
+}

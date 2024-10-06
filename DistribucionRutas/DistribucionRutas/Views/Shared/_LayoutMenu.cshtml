@@ -179,6 +179,26 @@
                         </a>
                     </li>
                 }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).Pedidos)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Pedido") { <text>active</text> }"
+                           href='@Url.Action("Pedido", "Pedido")'>
+                            <i class="fa fa-shopping-bag"></i>
+                            Pedidos
+                        </a>
+                    </li>
+                }
+                @if (((DistribucionRutas.Models.Permisos)Session["Permisos"]).Rutas)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if ( ViewBag.PaginaActual == "Ruta") { <text>active</text> }"
+                           href='@Url.Action("Ruta", "Ruta")'>
+                            <i class="fa fa-street-view"></i>
+                            Rutas
+                        </a>
+                    </li>
+                }
             </ul>
             <hr>
             <div class="dropdown">

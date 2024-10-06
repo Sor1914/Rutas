@@ -124,9 +124,11 @@
     <Compile Include="Clases\ClsConexionSql.cs" />
     <Compile Include="Clases\ClsEnvioEmail.cs" />
     <Compile Include="Clases\ClsLogin.cs" />
+    <Compile Include="Clases\ClsPedido.cs" />
     <Compile Include="Clases\ClsProductos.cs" />
     <Compile Include="Clases\ClsProveedores.cs" />
     <Compile Include="Clases\ClsRegistro.cs" />
+    <Compile Include="Clases\ClsRuta.cs" />
     <Compile Include="Clases\ClsTipoVehiculo.cs" />
     <Compile Include="Clases\ClsUsuarios.cs" />
     <Compile Include="Clases\ClsVehiculos.cs" />
@@ -141,6 +143,11 @@
       <DependentUpon>SqlLogin.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Consultas\SqlPedido.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlPedido.resx</DependentUpon>
     </Compile>
     <Compile Include="Consultas\SqlProductos.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -162,6 +169,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SqlRegistros.resx</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\SqlRuta.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlRuta.resx</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\SqlTipoVehiculo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -180,21 +192,26 @@
     <Compile Include="Controllers\ConductoresController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuPrincipalController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\RutaController.cs" />
     <Compile Include="Controllers\TipoVehiculoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VehiculosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Productos.cs" />
     <Compile Include="Models\Conductores.cs" />
     <Compile Include="Models\Permisos.cs" />
     <Compile Include="Models\Proveedores.cs" />
+    <Compile Include="Models\ProveedorProducto.cs" />
     <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Ruta.cs" />
     <Compile Include="Models\TipoVehiculo.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\Vehiculos.cs" />
@@ -245,8 +262,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Maps.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MostrarMensaje.js" />
+    <Content Include="Scripts\RuteMap.js" />
     <Content Include="Scripts\sidebars.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -276,6 +295,11 @@
     <Content Include="Views\Proveedores\Proveedores.cshtml" />
     <Content Include="Views\Productos\_Productos.cshtml" />
     <Content Include="Views\Productos\Productos.cshtml" />
+    <Content Include="Views\Productos\ProductoProveedor.cshtml" />
+    <Content Include="Views\Productos\_ProductoProveedor.cshtml" />
+    <Content Include="Views\Pedido\Pedido.cshtml" />
+    <Content Include="Views\Pedido\_Pedido.cshtml" />
+    <Content Include="Views\Ruta\Ruta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +340,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlLogin.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlPedido.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlPedido.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\SqlProductos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlProductos.Designer.cs</LastGenOutput>
@@ -331,6 +359,10 @@
     <EmbeddedResource Include="Consultas\SqlRegistros.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SqlRegistros.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\SqlRuta.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlRuta.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\SqlTipoVehiculo.resx">
       <Generator>ResXFileCodeGenerator</Generator>

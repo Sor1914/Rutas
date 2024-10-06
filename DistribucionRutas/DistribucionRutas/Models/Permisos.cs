@@ -7,6 +7,8 @@
         public bool GestionTipoVehiculo { get;set; } = false;
         public bool GestionVehiculos { get; set; } = false;
         public bool GestionProveedores { get; set; } = false;
-        public bool GestionProductos { get; set; } = false; 
+        public bool GestionProductos { get; set; } = false;
+        public bool Pedidos { get; set; } = false;
+        public bool Rutas { get; set; } = false;
     }
 }

@@ -117,60 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActualizaRegistro" xml:space="preserve">
-    <value>update productos set PesoProducto = '{0}', UsuarioModifico = '{1}'
-where IdProducto = '{2}'</value>
-  </data>
-  <data name="CambiaEstadoRegistro" xml:space="preserve">
-    <value>update productos set Estado = {0}, UsuarioModifico = '{1}'
-where IdProducto = '{2}'</value>
-  </data>
-  <data name="CuentaRegistro" xml:space="preserve">
-    <value>select count(1) from Productos
-where CONCAT(NombreProducto, TipoProducto) Like '%{0}%'
-and estado = 1</value>
-  </data>
-  <data name="EliminaProveedorProducto" xml:space="preserve">
-    <value>delete proveedorProducto where IdProveedor = {0} and IdProducto = {1}</value>
-  </data>
-  <data name="InsertaProveedorProducto" xml:space="preserve">
-    <value>insert into ProveedorProducto (IdProveedor, IdProducto, PrecioProducto, Existencia, Estado, UsuarioCreo, FechaCreo)
-values ({0}, {1}, {2}, {3}, 1, '{4}', CURRENT_TIMESTAMP)</value>
-  </data>
-  <data name="InsertaRegistro" xml:space="preserve">
-    <value>insert into Productos(NombreProducto, TipoProducto, PesoProducto, Estado, UsuarioCreo, FechaCreo)
-values('{0}', '{1}',{2}, 1, '{3}', CURRENT_TIMESTAMP);</value>
-  </data>
-  <data name="ObtieneDatos" xml:space="preserve">
-    <value>Select ROW_NUMBER() OVER(Order by FechaCreo ASC) as Numero,
-Productos.*
-from Productos
-where CONCAT(NombreProducto, TipoProducto) Like '%{0}%'
-and estado = 1
-order by Numero
-OFFSET {1} ROWS FETCH NEXT {2} ROWS ONLY;</value>
-  </data>
-  <data name="ObtieneProveedores" xml:space="preserve">
-    <value>Select * from proveedor where estado = 1</value>
-  </data>
-  <data name="ObtieneProveedorProducto" xml:space="preserve">
-    <value>select 
-ROW_NUMBER() OVER(Order by proveedorProducto.FechaCreo ASC) as Numero,
-proveedor.NombreProveedor,
-productos.NombreProducto,
-proveedorProducto.PrecioProducto,
-proveedorProducto.Existencia,
-proveedorProducto.UsuarioCreo,
-proveedorProducto.FechaCreo,
-proveedorProducto.Estado,
-proveedorProducto.IdProducto,
-proveedorProducto.IdProveedor
-from proveedorProducto
-inner join proveedor 
-on proveedorProducto.IdProveedor = proveedor.IdProveedor
-inner join productos
-on productos.idProducto = proveedorProducto.idProducto
-where proveedorProducto.Estado = 1
-and proveedorProducto.IdProducto = {0}</value>
+  <data name="ObtenerPedidos" xml:space="preserve">
+    <value>Select 
+pedidos.IdPedido as IdPedido,
+pedidos.Latitud as LatitudInicial, 
+pedidos.Longitud as LongitudInicial,
+proveedor.Latitud as LatitudFinal,
+proveedor.Longitud as Longitudfinal,
+pedidos.UsuarioCreo,
+productos.NombreProducto
+from pedidos
+inner join DetallePedido
+on pedidos.IdPedido = DetallePedido.IdPedido
+inner join Productos
+on DetallePedido.IdProducto = Productos.IdProducto
+inner join ProveedorProducto
+on Productos.IdProducto = ProveedorProducto.IdProducto
+inner join Proveedor
+on Proveedor.IdProveedor = ProveedorProducto.IdProveedor
+where pedidos.Estado = 1</value>
   </data>
 </root>

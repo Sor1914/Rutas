@@ -41,7 +41,7 @@
                                 <div class="col-8">
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Contrasenia, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "10" } })
+                                        @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "20" } })
                                         @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger control-label" })
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                 <div class="col-8">
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.ConfirmContrasenia, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.ConfirmContrasenia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "10" } })
+                                        @Html.EditorFor(model => model.ConfirmContrasenia, new { htmlAttributes = new { @class = "form-control text-center", maxlength = "20" } })
                                         @Html.ValidationMessageFor(model => model.ConfirmContrasenia, "", new { @class = "text-danger control-label" })
                                     </div>
                                 </div>

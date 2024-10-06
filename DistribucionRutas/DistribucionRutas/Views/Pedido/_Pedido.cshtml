@@ -1,4 +1,5 @@
-﻿<div id="partial">
+﻿
+<div id="partial">
     <div class="row bottom-100">
         <div class="col-6 align-content-center">
             <div class="input-group" role="group">
@@ -19,12 +20,10 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Placa</th>
-                <th>Km Recorridos</th>
-                <th>Licencia</th>
-                <th>idTipoVehiculo</th>
-                <th style="width:1%;">Editar</th>
-                <th style="width:1%;">Gestionar</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                 <th style="width:1%;">Comprar</th>              
             </tr>
         </thead>
         <tbody>
@@ -38,45 +37,29 @@
             {
                 foreach (var fila in ViewBag.ListaRegistros)
                 {
-        <tr>
-            <td>@fila.Numero</td>
-            <td>@fila.Placa</td>
-            <td>@fila.KmRecorridos</td>
-            <td>@fila.LicenciaConductor</td>
-            <td>@fila.idTipoVehiculo</td>
-            <td>
-                <a href="@Url.Action("mostrarModalEditar", new
-                                {
-                                    placa = @fila.Placa,
-                                    licenciaConductor = @fila.LicenciaConductor,
-                                    idTipoVehiculo = @fila.idTipoVehiculo,
-                                    kmRecorridos = @fila.KmRecorridos
+                    <tr>
+                        <td>@fila.Numero</td>
+                        <td>@fila.IdProducto</td>
+                        <td>@fila.NombreProducto</td>
+                        <td>@fila.TipoProducto</td>
+                        <td>
+                            <a href="@Url.Action("mostrarModalComprar", new
+                                {     
+                                    id = @fila.IdProducto
                                 })" class="btn btn-secondary">
-                    <i class="fa fa-edit text-white"></i>
-                </a>
-            </td>
-            <td>
-                @if (fila.Estado == 1)
-                {
-                    <a href="@Url.Action("notificarEliminacion", new {id = @fila.Placa,
-                                                                                  tipo = "Desactivar"})" class="btn btn-danger" )>
-                        <i class="fa fa-trash text-white"></i>
-                    </a>
-                }
-                else
-                {
-                    <a href="@Url.Action("notificarEliminacion", new {id = @fila.Placa,
-                                                                                  tipo = "Activar"})" class="btn btn-success" )>
-                        <i class="fa fa-check text-white"></i>
-                    </a>
-                }
-            </td>
-        </tr>
+                                <i class="fa fa-shopping-bag text-white"></i>
+                            </a>
+                        </td>                        
+
+                    </tr>
                 }
             }
         </tbody>
     </table>
 </div>
+
+
+
 <script src="/Scripts/jquery-3.7.0.min.js"></script>
 <script>
      $(document).ready(function () {
@@ -98,7 +81,7 @@
 
         function cargarPagina(inicioRegistros) {
              $.ajax({
-                url: '@Url.Action("Paginacion", "Productos")',
+                url: '@Url.Action("Paginacion", "Pedido")',
                 type: 'GET',
                 data: { inicioRegistros: inicioRegistros, tamanoPagina: @ViewBag.TamanoPagina, busqueda: "@ViewBag.ValorBusqueda"},
                 success: function (result) {
@@ -111,5 +94,6 @@
         }
     });
 </script>
+
 
 

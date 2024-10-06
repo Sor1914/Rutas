@@ -2,6 +2,7 @@ Drop Database Rutas;
 Create Database Rutas;
 Use Rutas;
 Use Prueba;
+
 --aun falta crear la tabla del precio de la gas
 Create Table Roles(	
 	IdRol int not null IDENTITY(1,1) PRIMARY KEY,	
@@ -47,6 +48,7 @@ values('8:00', '12:00', '17:00', 1, 'system', CURRENT_TIMESTAMP);
 
 insert into horarios (horaEntrada, horaAlmuerzo, HoraSalida, estado, UsuarioCreo, FechaCreo)
 values('8:00', '13:00', '18:00', 1, 'system', CURRENT_TIMESTAMP);
+
 Create Table Conductores(	
 	Licencia varchar(16) Primary Key,	
 	TipoLicencia varchar(1),
@@ -77,6 +79,19 @@ Create Table TipoVehiculos(
 	FechaModifico Datetime
 );
 
+alter table  TipoVehiculos
+alter column CapacidadPeso
+Decimal (8,2);
+
+alter table  TipoVehiculos
+alter column KMXGalon
+Decimal (8,2);
+
+alter table  TipoVehiculos
+alter column Galones
+Decimal (8,2);
+
+
 Create Table Vehiculos
 (
 	Placa varchar(7) primary key,
@@ -91,6 +106,7 @@ Create Table Vehiculos
 	foreign key(LicenciaConductor) references Conductores(LIcencia),
 	foreign key(idTipoVehiculo) references TipoVehiculos(IdTipoVehiculo)
 )
+
 
 Create Table Proveedor
 (
@@ -119,7 +135,6 @@ Create Table Productos
 	FechaModifico Datetime
 )
 
-
 Create Table ProveedorProducto
 (
 	IdProveedor int Foreign Key References Proveedor(IdProveedor),
@@ -134,14 +149,15 @@ Create Table ProveedorProducto
 	FechaModifico Datetime
 )
 
-Create Table Rutas
+alter table proveedorproducto
+alter column PrecioProducto Decimal(8,2)
+
+
+Create Table Pedidos
 (
-	IdRuta int IDENTITY(1,1) PRIMARY KEY,	
-	FechaProgramada DateTime,
-	LatitudInicial Varchar(50),
-	LatitudFinal Varchar(50),
-	LongitudInicial Varchar(50),
-	LongitudFinal Varchar(50),
+	IdPedido int IDENTITY(1,1) PRIMARY KEY,	
+	Latitud Varchar(50),
+	Longitud Varchar(50),
 	Estado int,
 	UsuarioCreo varchar(10),
 	FechaCreo DateTime Default Current_Timestamp,
@@ -149,18 +165,12 @@ Create Table Rutas
 	FechaModifico Datetime
 )
 
-Create Table DetalleRuta
+Create Table DetallePedido
 (
 	IdDetalle int Identity(1,1) Primary Key,
-	FechaCreoEnvio DateTime,
-	Latitud Varchar(50),
-	Longitud Varchar(50),
-	Cantidad decimal (2,2),	
-	PrioridadVisita int,
-	Placa Varchar(7) foreign key references Vehiculos(Placa),
+	Cantidad decimal (8,2),		
 	IdProducto int foreign key references Productos(IdProducto),
-	IdRuta int foreign key references Rutas(IdRuta),
-	Usuario Varchar(10) foreign key references Usuarios(Usuario),
+	IdPedido int foreign key references Pedidos(IdPedido),
 	Estado int,
 	UsuarioCreo varchar(10),
 	FechaCreo DateTime Default Current_Timestamp,
@@ -174,8 +184,9 @@ VALUES
 ('Conductor', 'Sys'),
 ('Usuario', 'Sys');
 
-INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo)
-VALUES ('JSOR78',ENCRYPTBYPASSPHRASE('JS0R', 'Sor1906197912' ),'jonathansor2000sm@gmail.com','Jonathan Elias','Sor Monroy',1, 'Sys');
+
+INSERT INTO Usuarios(Usuario, Contrasenia, Email, Nombres, Apellidos, IdRol, UsuarioCreo, Estado)
+VALUES ('JSOR',ENCRYPTBYPASSPHRASE('JS0R', 'Sor1906197912' ),'jonathansor2000sm@gmail.com','Jonathan Elias','Sor Monroy',1, 'Sys',1);
 
 --Querys para Desarrollo
 
@@ -368,4 +379,75 @@ where IdProducto = '{2}'
 update productos set Estado = {0}, UsuarioModifico = '{1}'
 where IdProducto = '{2}'
 
+use rutas;
+select * from Roles
 
+Select Count(1) from Usuarios inner join Roles on Usuarios.IdRol = Roles.IdRol 	WHERE CONCAT(usuarios.USUARIO,usuarios.EMAIL,usuarios.NOMBRES,usuarios.APELLIDOS) LIKE '%%';
+	
+insert into ProveedorProducto (IdProveedor, IdProducto, PrecioProducto, Existencia, Estado, UsuarioCreo, FechaCreo)
+values ({0}, {1}, {2}, {3}, 1, '{4}', CURRENT_TIMESTAMP) 
+
+insert into ProveedorProducto (IdProveedor, IdProducto, PrecioProducto, Existencia, Estado, UsuarioCreo, FechaCreo)
+values (3, 3, 10, 10, 1, 'JSOR', CURRENT_TIMESTAMP)
+
+select 
+ROW_NUMBER() OVER(Order by proveedorProducto.FechaCreo ASC) as Numero,
+proveedor.NombreProveedor,
+productos.NombreProducto,
+proveedorProducto.PrecioProducto,
+proveedorProducto.Existencia,
+proveedorProducto.UsuarioCreo,
+proveedorProducto.FechaCreo,
+proveedorProducto.Estado,
+proveedorProducto.IdProducto,
+proveedorProducto.IdProveedor
+from proveedorProducto
+inner join proveedor 
+on proveedorProducto.IdProveedor = proveedor.IdProveedor
+inner join productos
+on productos.idProducto = proveedorProducto.idProducto
+where proveedorProducto.Estado = 1
+
+select * from ProveedorProducto
+delete proveedorProducto where IdProveedor = {0} and IdProducto = {1}
+
+Insert Pedidos (Latitud, Longitud, Estado, UsuarioCreo, FechaCreo)
+values ('{0}','{1}',1,'{2}',CURRENT_TIMESTAMP);
+
+Insert DetallePedido(Cantidad, IdProducto, IdPedido, Estado, UsuarioCreo, FechaCreo)
+Values (10,0,(Select max(IdPedido) from Pedidos), 1, 'JSOR', Current_timestamp)
+
+Insert DetallePedido(Cantidad, IdProducto, IdPedido, Estado, UsuarioCreo, FechaCreo)
+Values (1,0,(Select max(IdPedido) from Pedidos), 1, 'JSOR', Current_timestamp)
+
+Insert DetallePedido(Cantidad, IdProducto, IdPedido, Estado, UsuarioCreo, FechaCreo)
+Values (1,0,(Select max(IdPedido) from Pedidos), 1, 'JSOR', Current_timestamp)
+
+Insert DetallePedido(Cantidad, IdProducto, IdPedido, Estado, UsuarioCreo, FechaCreo)
+Values ({0},{1},(Select max(IdPedido) from Pedidos), 1, '{2}', Current_timestamp)
+
+select * from detallepedido
+
+Select 
+pedidos.IdPedido as IdPedido,
+pedidos.Latitud as LatitudInicial, 
+pedidos.Longitud as LongitudInicial,
+proveedor.Latitud as LatitudFinal,
+proveedor.Longitud as Longitudfinal,
+pedidos.UsuarioCreo,
+productos.NombreProducto
+from pedidos
+inner join DetallePedido
+on pedidos.IdPedido = DetallePedido.IdPedido
+inner join Productos
+on DetallePedido.IdProducto = Productos.IdProducto
+inner join ProveedorProducto
+on Productos.IdProducto = ProveedorProducto.IdProducto
+inner join Proveedor
+on Proveedor.IdProveedor = ProveedorProducto.IdProveedor
+where pedidos.Estado = 1
+
+
+select * from Conductores where Licencia not in (select LicenciaConductor from vehiculos where licencia = Conductores.Licencia and estado = 1) and estado = 1;
+
+select * from vehiculos

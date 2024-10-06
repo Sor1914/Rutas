@@ -220,14 +220,15 @@ namespace DistribucionRutas.Controllers
             }
         }
 
-        public async Task<ActionResult> GuardarModal(Conductores conductor, string licencia)
+        public async Task<ActionResult> GuardarModal(Conductores conductor, string licencia, string editar)
         {
-            if (string.IsNullOrEmpty(licencia))
+            if (editar != "True")
             {
                 return await InsertarConductor(conductor);
             }
             else
             {
+                conductor.Licencia = licencia;
                 return await ActualizarConductor(conductor);
             }
         }

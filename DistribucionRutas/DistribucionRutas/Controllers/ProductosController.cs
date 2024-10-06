@@ -2,6 +2,7 @@
 using DistribucionRutas.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Caching;
@@ -109,6 +110,21 @@ namespace DistribucionRutas.Controllers
             return Productos(false);
         }
 
+        public ActionResult mostrarModalProductoProveedor(int idProducto)
+        {
+            ViewBag.modalProductoProveedor = true;
+            ViewBag.IdProducto = idProducto;
+            LlenarProveedores();
+            return Productos(false);
+        }
+
+        public ActionResult mostrarModalDetalleProductoProveedor(int idProducto)
+        {
+            ViewBag.modalDetalleProductoProveedor = true;
+            ObtenerProductoProveedor(idProducto);
+            return Productos(false);
+        }
+
         public ActionResult mostrarModalNuevo()
         {
             ViewBag.MostrarModalNuevo = true;
@@ -195,5 +211,87 @@ namespace DistribucionRutas.Controllers
             }
             ViewBag.tipoProductoSelectedList = items;
         }
+
+        private void LlenarProveedores()
+        {
+            List<Proveedores> lista = new List<Proveedores>();
+            if (HttpContext.Cache["listaProveedores"] as List<Conductores> != null)
+                lista = HttpContext.Cache["listaProveedores"] as List<Proveedores>;
+            else
+            {
+                clsConsultas = new ClsProductos();
+                lista = clsConsultas.obtenerProveedores();
+                HttpContext.Cache.Insert("listaProveedores", lista, null, DateTime.Now.AddMinutes(30), Cache.NoSlidingExpiration);
+            }
+            var listaSelect = new List<SelectListItem>();
+            foreach (var dato in lista)
+            {
+                listaSelect.Add(new SelectListItem { Value = dato.IdProveedor.ToString(), Text = dato.NombreProveedor});
+            }
+
+            ViewBag.listaProveedores = listaSelect;
+        }
+
+        public ActionResult GuardarProductoProveedor(ProveedorProducto dato, int idProducto)
+        {
+            try
+            {
+                clsConsultas = new ClsProductos();
+                dato.IdProducto = idProducto;
+                bool respuesta = clsConsultas.InsertarProveedorProducto(dato, Session["usuario"].ToString());
+                if (respuesta)
+                {
+                    string mensajeNotificacion = "La información se guardó correctamente";
+                    Util.MostrarMensaje(ViewBag, mensajeNotificacion, 1);
+                }
+                else
+                    Util.MostrarMensaje(ViewBag, "Hubo un error al guardar la información", 3);
+                return Productos(true);
+            }
+            catch (Exception ex)
+            {
+                Util.MostrarMensaje(ViewBag, "Hubo un error al guardar la información", 3);
+                return Productos();
+            }
+        }
+
+        public ActionResult ObtenerProductoProveedor(int idProducto)
+            {
+            List<ProveedorProducto> ListaProductoProveedor = new List<ProveedorProducto>();
+            clsConsultas = new ClsProductos();
+            ListaProductoProveedor = clsConsultas.ObtenerProveedorProducto(idProducto);
+            HttpContext.Cache.Insert("listaProveedorProducto", ListaProductoProveedor, null, DateTime.Now.AddMinutes(30), Cache.NoSlidingExpiration);
+            ViewBag.ListaProductoProveedor = ListaProductoProveedor;
+            return Productos();
+        }
+
+        public ActionResult notificarEliminacionProductoProveedor(int id, int id2, string tipo)
+        {
+            try
+            {
+                int estado;
+                string mensaje;
+                if (tipo.Equals("Activar"))
+                {
+                    estado = 1;
+                    mensaje = "El registro se activó correctamente";
+                }
+                else
+                {
+                    estado = 0;
+                    mensaje = "El registro se desactivó correctamente";
+                }
+                clsConsultas = new ClsProductos();
+                bool seCambio = clsConsultas.ActualizarEstadoProveedorProducto(id, id2);
+                Util.MostrarMensaje(ViewBag, mensaje, 1);
+                return Productos(true);
+            }
+            catch (Exception ex)
+            {
+                Util.MostrarMensaje(ViewBag, "Hubo un error al cambiar el estado", 3);
+                return Productos(false);
+            }
+        }
+
     }
 }

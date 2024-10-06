@@ -1,4 +1,5 @@
-﻿<div id="partial">
+﻿
+<div id="partial">
     <div class="row bottom-100">
         <div class="col-6 align-content-center">
             <div class="input-group" role="group">
@@ -24,7 +25,9 @@
                 <th>Tipo</th>
                 <th>Peso</th>
                 <th style="width:1%;">Editar</th>
-                <th style="width:1%;">Gestionar</th>
+                <th style="width:1%;">Prov</th>
+                <th style="width:1%;">Detalle</th>
+                <th style="width:1%;">Gestion</th>
             </tr>
         </thead>
         <tbody>
@@ -56,6 +59,16 @@
                             </a>
                         </td>
                         <td>
+                            <a href="@Url.Action("mostrarModalProductoProveedor", new {idProducto = @fila.IdProducto})" class="btn btn-info" )>
+                                <i class="fa fa-plus text-white"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("mostrarModalDetalleProductoProveedor", new {idProducto = @fila.IdProducto })" class="btn btn-info" )>
+                                <i class="fa fa-table text-white"></i>
+                            </a>
+                        </td>
+                        <td>
                             @if (fila.Estado == 1)
                             {
                                 <a href="@Url.Action("notificarEliminacion", new {id = @fila.IdProducto,
@@ -71,12 +84,16 @@
                                 </a>
                             }
                         </td>
+
                     </tr>
                 }
             }
         </tbody>
     </table>
 </div>
+
+
+
 <script src="/Scripts/jquery-3.7.0.min.js"></script>
 <script>
      $(document).ready(function () {

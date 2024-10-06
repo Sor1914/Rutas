@@ -35,3 +35,4 @@ function definirTipoNotificacion(tipo, elemento) {
         return claseEnc;
     }
 }
+

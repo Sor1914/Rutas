@@ -18,10 +18,10 @@ namespace DistribucionRutas.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DisplayName("Direccion")]
         public string DireccionProveedor { get; set; }
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        
         [DisplayName("Longitud")]
         public string Longitud { get; set; }
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        
         [DisplayName("Latitud")]
         public string Latitud { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio")]
